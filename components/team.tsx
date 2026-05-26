@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
-import { Users } from "lucide-react"
+import { Users, Heart } from "lucide-react"
 
 // Team data - editable via GitHub
 export const teamMembers = [
@@ -12,13 +12,6 @@ export const teamMembers = [
     university: "筑波大学大学院 情報学学位プログラム M1",
     description: "Table Matchの創設者。学生と企業の新しい出会いの形を追求。",
     image: "/images/representative.jpg",
-  },
-  {
-    name: "畠",
-    role: "運営メンバー",
-    university: "",
-    description: "運営に参画。詳細プロフィールは後日更新予定。",
-    image: null,
   },
   {
     name: "後畠 隼輔",
@@ -40,7 +33,7 @@ export const teamMembers = [
 function Avatar({ name, image }: { name: string; image: string | null }) {
   if (image) {
     return (
-      <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden ring-4 ring-primary/20 ring-offset-4 ring-offset-card">
+      <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden ring-4 ring-primary/20 ring-offset-4 ring-offset-card shadow-xl">
         <Image
           src={image}
           alt={name}
@@ -53,7 +46,7 @@ function Avatar({ name, image }: { name: string; image: string | null }) {
   
   const initials = name.split(" ").map(n => n[0]).join("").slice(0, 2)
   return (
-    <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center ring-4 ring-primary/10 ring-offset-4 ring-offset-card">
+    <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center ring-4 ring-primary/10 ring-offset-4 ring-offset-card shadow-xl">
       <span className="text-2xl sm:text-3xl font-bold gradient-text">{initials}</span>
     </div>
   )
@@ -63,18 +56,18 @@ export function Team() {
   return (
     <section id="team" className="py-24 relative overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-dots opacity-30" />
+      <div className="absolute inset-0 bg-grid opacity-30" />
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm font-medium text-muted-foreground mb-4">
-            <Users className="w-4 h-4 text-primary" />
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary mb-4">
+            <Users className="w-4 h-4" />
             Team
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
@@ -85,7 +78,7 @@ export function Team() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
           {teamMembers.map((member, index) => (
             <motion.div
               key={member.name}
@@ -93,7 +86,7 @@ export function Team() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="glass rounded-2xl p-6 text-center card-interactive group"
+              className="bg-card rounded-3xl p-8 text-center border border-border shadow-lg card-interactive group"
             >
               <div className="flex justify-center mb-6">
                 <motion.div
@@ -103,10 +96,10 @@ export function Team() {
                   <Avatar name={member.name} image={member.image} />
                 </motion.div>
               </div>
-              <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-1">{member.name}</h3>
-              <p className="text-sm font-medium text-primary mb-2">{member.role}</p>
+              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-1">{member.name}</h3>
+              <p className="text-sm font-semibold text-primary mb-2">{member.role}</p>
               {member.university && (
-                <p className="text-xs text-muted-foreground mb-3">{member.university}</p>
+                <p className="text-xs text-muted-foreground mb-4">{member.university}</p>
               )}
               <p className="text-sm text-muted-foreground leading-relaxed">{member.description}</p>
             </motion.div>
@@ -118,13 +111,16 @@ export function Team() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
           className="mt-16 text-center"
         >
-          <div className="glass-strong rounded-2xl p-8 max-w-2xl mx-auto">
-            <h3 className="text-xl font-semibold text-foreground mb-3">
-              一緒に活動しませんか？
-            </h3>
+          <div className="bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 rounded-3xl p-8 max-w-2xl mx-auto border border-primary/20">
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <Heart className="w-5 h-5 text-accent" />
+              <h3 className="text-xl font-bold text-foreground">
+                一緒に活動しませんか？
+              </h3>
+            </div>
             <p className="text-muted-foreground mb-4">
               Table Matchでは運営メンバーを随時募集しています。
               興味がある方はお気軽にお問い合わせください。

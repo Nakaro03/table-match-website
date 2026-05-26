@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Check, TrendingDown, Users, Mail, ArrowRight } from "lucide-react"
+import { Check, Users, ArrowRight, Building2, Sparkles } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
@@ -15,7 +15,7 @@ const benefits = [
 ]
 
 const comparison = [
-  { item: "採用単価", traditional: "約93.6万円", tableMatch: "7〜10万円" },
+  { item: "採用単価", traditional: "約93.6万円", tableMatch: "10万円〜" },
   { item: "学生との接触時間", traditional: "15〜30分", tableMatch: "3〜5時間" },
   { item: "本音の対話", traditional: "難しい", tableMatch: "食事を囲んで自然に" },
   { item: "ミスマッチ防止", traditional: "限定的", tableMatch: "双方向の深い理解" },
@@ -23,8 +23,10 @@ const comparison = [
 
 export function ForCompanies() {
   return (
-    <section id="for-companies" className="py-24 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="for-companies" className="py-24 bg-muted/30 relative overflow-hidden">
+      <div className="absolute inset-0 bg-dots opacity-30" />
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -32,7 +34,11 @@ export function ForCompanies() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary mb-4">
+            <Building2 className="w-4 h-4" />
+            For Companies
+          </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             企業様向けご案内
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -47,9 +53,10 @@ export function ForCompanies() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="bg-card rounded-3xl p-8 border border-border shadow-lg"
           >
-            <h3 className="text-2xl font-semibold text-foreground mb-6">参加のメリット</h3>
-            <div className="space-y-4">
+            <h3 className="text-2xl font-bold text-foreground mb-8">参加のメリット</h3>
+            <div className="space-y-5">
               {benefits.map((benefit, index) => (
                 <motion.div
                   key={benefit}
@@ -57,10 +64,12 @@ export function ForCompanies() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="flex items-start gap-3"
+                  className="flex items-start gap-4"
                 >
-                  <Check className="h-5 w-5 text-accent mt-0.5 shrink-0" />
-                  <span className="text-foreground">{benefit}</span>
+                  <div className="flex items-center justify-center w-8 h-8 rounded-full bg-accent/10 shrink-0">
+                    <Check className="h-4 w-4 text-accent" />
+                  </div>
+                  <span className="text-foreground font-medium">{benefit}</span>
                 </motion.div>
               ))}
             </div>
@@ -72,37 +81,54 @@ export function ForCompanies() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-primary rounded-2xl p-8 text-primary-foreground"
+            className="bg-gradient-to-br from-primary to-primary/80 rounded-3xl p-8 text-primary-foreground shadow-2xl shadow-primary/20 relative overflow-hidden"
           >
-            <h3 className="text-2xl font-semibold mb-6">出展費用</h3>
-            <div className="mb-6">
-              <span className="text-5xl font-bold">7〜10万円</span>
-              <span className="text-primary-foreground/70 ml-2">（税込）/ 1回</span>
+            {/* Decorative elements */}
+            <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/10 rounded-full blur-2xl" />
+            
+            <div className="relative z-10">
+              <div className="flex items-center gap-2 mb-6">
+                <Sparkles className="w-5 h-5" />
+                <h3 className="text-2xl font-bold">出展費用</h3>
+              </div>
+              <div className="mb-8">
+                <span className="text-6xl font-bold">1社10万円〜</span>
+                <span className="text-primary-foreground/80 ml-2 text-lg">（税込）</span>
+              </div>
+              <ul className="space-y-4 mb-10">
+                <li className="flex items-center gap-3">
+                  <div className="flex items-center justify-center w-6 h-6 rounded-full bg-white/20">
+                    <Check className="h-4 w-4" />
+                  </div>
+                  <span>学生との3〜5時間の交流</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="flex items-center justify-center w-6 h-6 rounded-full bg-white/20">
+                    <Check className="h-4 w-4" />
+                  </div>
+                  <span>参加学生全員の連絡先取得</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="flex items-center justify-center w-6 h-6 rounded-full bg-white/20">
+                    <Check className="h-4 w-4" />
+                  </div>
+                  <span>会場費・食事代込み</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="flex items-center justify-center w-6 h-6 rounded-full bg-white/20">
+                    <Check className="h-4 w-4" />
+                  </div>
+                  <span>アンケートデータ提供</span>
+                </li>
+              </ul>
+              <Button variant="secondary" size="lg" asChild className="w-full group font-bold text-lg h-14 shadow-lg">
+                <Link href="#contact">
+                  お問い合わせ
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </Button>
             </div>
-            <ul className="space-y-3 mb-8">
-              <li className="flex items-center gap-2 text-sm">
-                <Check className="h-4 w-4" />
-                学生との3〜5時間の交流
-              </li>
-              <li className="flex items-center gap-2 text-sm">
-                <Check className="h-4 w-4" />
-                参加学生全員の連絡先取得
-              </li>
-              <li className="flex items-center gap-2 text-sm">
-                <Check className="h-4 w-4" />
-                会場費・食事代込み
-              </li>
-              <li className="flex items-center gap-2 text-sm">
-                <Check className="h-4 w-4" />
-                アンケートデータ提供
-              </li>
-            </ul>
-            <Button variant="secondary" size="lg" asChild className="w-full group">
-              <Link href="#contact">
-                お問い合わせ
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </Button>
           </motion.div>
         </div>
 
@@ -113,24 +139,24 @@ export function ForCompanies() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h3 className="text-2xl font-semibold text-foreground mb-8 text-center">
+          <h3 className="text-2xl font-bold text-foreground mb-8 text-center">
             従来の採用方法との比較
           </h3>
           <div className="overflow-x-auto">
-            <table className="w-full bg-card rounded-xl border border-border overflow-hidden">
+            <table className="w-full bg-card rounded-2xl border border-border overflow-hidden shadow-lg">
               <thead>
                 <tr className="bg-muted">
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-foreground"></th>
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-muted-foreground">従来の採用媒体</th>
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-accent">Table Match</th>
+                  <th className="px-6 py-5 text-left text-sm font-bold text-foreground"></th>
+                  <th className="px-6 py-5 text-left text-sm font-bold text-muted-foreground">従来の採用媒体</th>
+                  <th className="px-6 py-5 text-left text-sm font-bold text-primary">Table Match</th>
                 </tr>
               </thead>
               <tbody>
                 {comparison.map((row, index) => (
                   <tr key={row.item} className={index !== comparison.length - 1 ? "border-b border-border" : ""}>
-                    <td className="px-6 py-4 text-sm font-medium text-foreground">{row.item}</td>
-                    <td className="px-6 py-4 text-sm text-muted-foreground">{row.traditional}</td>
-                    <td className="px-6 py-4 text-sm text-foreground font-medium">{row.tableMatch}</td>
+                    <td className="px-6 py-5 text-sm font-bold text-foreground">{row.item}</td>
+                    <td className="px-6 py-5 text-sm text-muted-foreground">{row.traditional}</td>
+                    <td className="px-6 py-5 text-sm text-foreground font-semibold">{row.tableMatch}</td>
                   </tr>
                 ))}
               </tbody>
