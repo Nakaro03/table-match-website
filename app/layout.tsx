@@ -1,20 +1,21 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono, Noto_Sans_JP } from 'next/font/google'
+import { Inter, Space_Grotesk, Noto_Sans_JP } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const geist = Geist({ 
+const inter = Inter({ 
   subsets: ["latin"],
-  variable: "--font-geist"
+  variable: "--font-inter"
 });
 
-const geistMono = Geist_Mono({ 
+const spaceGrotesk = Space_Grotesk({ 
   subsets: ["latin"],
-  variable: "--font-geist-mono"
+  variable: "--font-space-grotesk"
 });
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
+  weight: ["400", "500", "700"],
   variable: "--font-noto-sans-jp"
 });
 
@@ -35,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ja" className={`${geist.variable} ${geistMono.variable} ${notoSansJP.variable} bg-background`}>
+    <html lang="ja" className={`${inter.variable} ${spaceGrotesk.variable} ${notoSansJP.variable} bg-background`}>
       <body className="font-sans antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}

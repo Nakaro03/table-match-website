@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { Send, CheckCircle, AlertCircle } from "lucide-react"
+import { Send, CheckCircle, AlertCircle, Mail, MessageSquare } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 type FormData = {
@@ -50,7 +50,7 @@ export function ContactForm() {
       } else {
         setStatus("error")
       }
-    } catch (error) {
+    } catch {
       setStatus("error")
     }
   }
@@ -65,19 +65,27 @@ export function ContactForm() {
   }
 
   return (
-    <section id="contact" className="py-24 bg-primary">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-24 relative overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
+      <div className="absolute inset-0 bg-grid opacity-30" />
+      
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-primary-foreground mb-4">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm font-medium text-muted-foreground mb-4">
+            <MessageSquare className="w-4 h-4 text-primary" />
+            Contact
+          </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             お問い合わせ
           </h2>
-          <p className="text-lg text-primary-foreground/80">
+          <p className="text-lg text-muted-foreground max-w-xl mx-auto">
             イベント参加や出展に関するお問い合わせはこちらから
           </p>
         </motion.div>
@@ -86,26 +94,33 @@ export function ContactForm() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="bg-primary-foreground rounded-2xl p-8 shadow-lg"
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="glass-strong rounded-3xl p-6 sm:p-10"
         >
           {status === "success" ? (
-            <div className="text-center py-8">
-              <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-foreground mb-2">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="text-center py-12"
+            >
+              <div className="w-20 h-20 rounded-full bg-emerald-500/10 flex items-center justify-center mx-auto mb-6">
+                <CheckCircle className="h-10 w-10 text-emerald-500" />
+              </div>
+              <h3 className="text-2xl font-semibold text-foreground mb-3">
                 送信完了しました
               </h3>
-              <p className="text-muted-foreground">
-                お問い合わせありがとうございます。担当者より折り返しご連絡いたします。
+              <p className="text-muted-foreground mb-8">
+                お問い合わせありがとうございます。<br />
+                担当者より折り返しご連絡いたします。
               </p>
               <Button
                 variant="outline"
-                className="mt-6"
                 onClick={() => setStatus("idle")}
+                className="border-border"
               >
                 新しいお問い合わせ
               </Button>
-            </div>
+            </motion.div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -120,7 +135,7 @@ export function ContactForm() {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:ring-2 focus:ring-accent focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-secondary/50 text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                     placeholder="山田 太郎"
                   />
                 </div>
@@ -135,7 +150,7 @@ export function ContactForm() {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:ring-2 focus:ring-accent focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-secondary/50 text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                     placeholder="example@email.com"
                   />
                 </div>
@@ -152,7 +167,7 @@ export function ContactForm() {
                     name="organization"
                     value={formData.organization}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:ring-2 focus:ring-accent focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-secondary/50 text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                     placeholder="〇〇大学 / 株式会社〇〇"
                   />
                 </div>
@@ -166,7 +181,7 @@ export function ContactForm() {
                     required
                     value={formData.type}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:ring-2 focus:ring-accent focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-secondary/50 text-foreground focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                   >
                     <option value="student">学生（イベント参加について）</option>
                     <option value="company">企業様（出展について）</option>
@@ -186,26 +201,33 @@ export function ContactForm() {
                   rows={5}
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:ring-2 focus:ring-accent focus:border-transparent transition-colors resize-none"
+                  className="w-full px-4 py-3 rounded-xl border border-border bg-secondary/50 text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
                   placeholder="お問い合わせ内容をご記入ください"
                 />
               </div>
 
               {status === "error" && (
-                <div className="flex items-center gap-2 text-destructive text-sm">
-                  <AlertCircle className="h-4 w-4" />
+                <motion.div 
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex items-center gap-2 text-destructive text-sm p-4 rounded-xl bg-destructive/10 border border-destructive/20"
+                >
+                  <AlertCircle className="h-4 w-4 flex-shrink-0" />
                   <span>送信に失敗しました。もう一度お試しください。</span>
-                </div>
+                </motion.div>
               )}
 
               <Button
                 type="submit"
                 size="lg"
                 disabled={status === "submitting"}
-                className="w-full group"
+                className="w-full group bg-primary hover:bg-primary/90 text-primary-foreground font-semibold h-14 text-base"
               >
                 {status === "submitting" ? (
-                  "送信中..."
+                  <span className="flex items-center gap-2">
+                    <div className="h-4 w-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
+                    送信中...
+                  </span>
                 ) : (
                   <>
                     送信する
@@ -214,9 +236,10 @@ export function ContactForm() {
                 )}
               </Button>
 
-              <p className="text-xs text-center text-muted-foreground">
-                送信いただいた内容は tablematch.info@gmail.com 宛に届きます
-              </p>
+              <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
+                <Mail className="h-3 w-3" />
+                <span>送信いただいた内容は tablematch.info@gmail.com 宛に届きます</span>
+              </div>
             </form>
           )}
         </motion.div>
