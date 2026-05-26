@@ -1,14 +1,14 @@
 import type { Metadata } from 'next'
-import { Inter, Space_Grotesk, Noto_Sans_JP } from 'next/font/google'
+import { Inter, Space_Grotesk, Noto_Sans_JP, Shippori_Mincho, M_PLUS_Rounded_1c } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter"
 });
 
-const spaceGrotesk = Space_Grotesk({ 
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-space-grotesk"
 });
@@ -17,6 +17,19 @@ const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
   variable: "--font-noto-sans-jp"
+});
+
+// Display fonts used by the /preview design directions
+const shipporiMincho = Shippori_Mincho({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-shippori"
+});
+
+const mPlusRounded = M_PLUS_Rounded_1c({
+  subsets: ["latin"],
+  weight: ["400", "500", "700", "800"],
+  variable: "--font-rounded"
 });
 
 export const metadata: Metadata = {
@@ -36,7 +49,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ja" className={`${inter.variable} ${spaceGrotesk.variable} ${notoSansJP.variable} bg-background`}>
+    <html lang="ja" className={`${inter.variable} ${spaceGrotesk.variable} ${notoSansJP.variable} ${shipporiMincho.variable} ${mPlusRounded.variable} bg-background`}>
       <body className="font-sans antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
