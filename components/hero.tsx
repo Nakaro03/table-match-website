@@ -157,7 +157,7 @@ export function Hero() {
                 
                 <div className="mt-5">
                   <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold" asChild>
-                    <Link href="https://docs.google.com/forms/d/e/1FAIpQLSe8Dpqo43rlkfdDN7Qkyt7dCXHgZisjv0d-rKpG64sd2Eyqdw/viewform" target="_blank" rel="noopener noreferrer">
+                    <Link href="https://docs.google.com/forms/d/e/1FAIpQLSfDHhkJ9dfnQ83kTyQ72CwSr2fs9QKICf7IW3xrBz3l0xZDlA/viewform" target="_blank" rel="noopener noreferrer">
                       参加申し込み
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>

@@ -16,9 +16,9 @@ export const upcomingEvents = [
     location: "四季の色（福岡市）",
     description: "社長の『成功』を追体験し、社長の『脳内』を覗ける、本音の人生戦略会議",
     capacity: 20,
-    targetAudience: ["インターン希望者", "就活準備中", "起業に興味ある方"],
+    targetAudience: ["アルバイトやインターンを探している学生", "就活準備中", "起業に興味ある方"],
     status: "募集中",
-    applicationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSe8Dpqo43rlkfdDN7Qkyt7dCXHgZisjv0d-rKpG64sd2Eyqdw/viewform",
+    applicationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfDHhkJ9dfnQ83kTyQ72CwSr2fs9QKICf7IW3xrBz3l0xZDlA/viewform",
   },
 ]
 
