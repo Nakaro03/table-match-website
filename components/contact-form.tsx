@@ -15,6 +15,12 @@ type FormData = {
 
 type FormStatus = "idle" | "submitting" | "success" | "error"
 
+// Web3Forms access key. This is designed to be public (it ships in the client
+// bundle); abuse is prevented by the allowed-domains setting on web3forms.com.
+const WEB3FORMS_ACCESS_KEY =
+  process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ||
+  "e402eae0-4c93-4cc2-8522-4112d143aef1"
+
 export function ContactForm() {
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -29,13 +35,50 @@ export function ContactForm() {
     e.preventDefault()
     setStatus("submitting")
 
+    const typeLabels: Record<FormData["type"], string> = {
+      student: "学生（イベント参加について）",
+      company: "企業様（出展について）",
+      other: "その他",
+    }
+
+    const emailContent = `Table Match ウェブサイトからのお問い合わせ
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+【お名前】
+${formData.name}
+
+【メールアドレス】
+${formData.email}
+
+【所属】
+${formData.organization || "未入力"}
+
+【お問い合わせ種別】
+${typeLabels[formData.type]}
+
+【お問い合わせ内容】
+${formData.message}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`
+
     try {
-      const response = await fetch("/api/contact", {
+      // Submit directly from the browser to Web3Forms (avoids server-side
+      // Cloudflare bot challenges; the access key is safe to expose client-side).
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Accept: "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: `【Table Match】ウェブサイトからのお問い合わせ - ${formData.name}様`,
+          from_name: "Table Match ウェブサイト",
+          email: formData.email,
+          name: formData.name,
+          message: emailContent,
+        }),
       })
 
       if (response.ok) {
