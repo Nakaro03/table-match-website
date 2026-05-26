@@ -1,100 +1,121 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Clock, MessageSquare, Lightbulb, Utensils, Users, Mic } from "lucide-react"
+import { Clock, Users, Building2, Coffee, MessageCircle, Camera, PartyPopper } from "lucide-react"
 
 const programItems = [
   {
-    time: "16:00",
-    duration: "20分",
+    time: "17:00",
     title: "オープニング",
-    description: "イベントの目的共有、運営紹介、参加者同士の自己紹介",
-    icon: Mic,
-  },
-  {
-    time: "16:20",
-    duration: "20分",
-    title: "アイスブレイク",
-    description: "カードゲーム（ito）を使って緊張をほぐし、場を温める",
+    description: "目的共有・チーム紹介",
     icon: Users,
   },
   {
-    time: "16:40",
-    duration: "30分",
-    title: "企業・社長紹介",
-    description: "事業説明だけでなく、経営者の人生ストーリーや価値観を共有",
-    icon: Lightbulb,
-  },
-  {
-    time: "17:10",
-    duration: "10分",
-    title: "匿名質問コーナー",
-    description: "QRコードを使って匿名で社長に質問。心理的ハードルなく本音を引き出す",
-    icon: MessageSquare,
-  },
-  {
-    time: "17:30",
-    duration: "60分",
-    title: "社長の修羅場ケーススタディ",
-    description: "実際に起きた経営危機をクイズ形式で追体験。経営者の思考を学ぶ",
+    time: "17:15",
+    title: "自己分析",
+    description: "自分の強みや今やりたいことを整理しアイスブレイク",
     icon: Clock,
   },
   {
-    time: "18:30",
-    duration: "90分",
-    title: "交流会・食事",
-    description: "美味しい食事を囲みながらフリートーク。社長と学生が自由に交流",
-    icon: Utensils,
+    time: "17:45",
+    title: "企業説明",
+    description: "参加企業4社が会社の魅力をプレゼン",
+    icon: Building2,
+  },
+  {
+    time: "18:25",
+    title: "休憩",
+    description: "お菓子でひと息",
+    icon: Coffee,
+  },
+  {
+    time: "18:40",
+    title: "シャッフル座談会",
+    description: "社長と本音で語る",
+    icon: MessageCircle,
+    highlight: true,
+  },
+  {
+    time: "19:40",
+    title: "閉会式",
+    description: "全体で記念撮影",
+    icon: Camera,
+  },
+  {
+    time: "20:00",
+    title: "交流会",
+    description: "デザート片手に自由に交流",
+    icon: PartyPopper,
   },
 ]
 
 export function Program() {
   return (
-    <section className="py-24 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-secondary">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            イベントプログラム
+          <p className="text-sm font-medium text-primary mb-2">TIMETABLE</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">
+            当日のながれ
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            ただの会社説明会ではありません。社長の脳内を覗き、本音で語り合う5時間です。
+          <p className="text-muted-foreground">
+            メインは「社長×学生」のシャッフル座談会!
           </p>
         </motion.div>
 
         <div className="relative">
           {/* Timeline line */}
-          <div className="absolute left-8 top-0 bottom-0 w-px bg-border hidden md:block" />
+          <div className="absolute left-6 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-0.5 bg-border" />
 
-          <div className="space-y-8">
+          <div className="space-y-6">
             {programItems.map((item, index) => (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative flex items-start gap-6"
+                transition={{ duration: 0.4, delay: index * 0.08 }}
+                className={`relative flex items-center gap-4 ${
+                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                }`}
               >
                 {/* Timeline dot */}
-                <div className="hidden md:flex items-center justify-center w-16 h-16 rounded-full bg-primary text-primary-foreground shrink-0 z-10">
-                  <item.icon className="h-6 w-6" />
-                </div>
+                <div className={`absolute left-6 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full z-10 ${
+                  item.highlight ? "bg-primary ring-4 ring-primary/20" : "bg-primary"
+                }`} />
 
-                <div className="flex-1 bg-card rounded-xl p-6 border border-border hover:border-accent/50 transition-colors">
-                  <div className="flex flex-wrap items-center gap-3 mb-3">
-                    <span className="text-sm font-semibold text-accent">{item.time}</span>
-                    <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded">
-                      {item.duration}
-                    </span>
+                {/* Content card */}
+                <div className={`ml-12 md:ml-0 md:w-[calc(50%-2rem)] ${
+                  index % 2 === 0 ? "md:pr-8" : "md:pl-8"
+                }`}>
+                  <div className={`bg-card rounded-lg p-5 border ${
+                    item.highlight ? "border-primary/30 shadow-sm" : "border-border"
+                  }`}>
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className={`p-2 rounded-md ${
+                        item.highlight ? "bg-primary text-primary-foreground" : "bg-secondary"
+                      }`}>
+                        <item.icon className="h-4 w-4" />
+                      </div>
+                      <span className={`text-sm font-semibold ${
+                        item.highlight ? "text-primary" : "text-muted-foreground"
+                      }`}>
+                        {item.time}
+                      </span>
+                    </div>
+                    <h3 className={`font-semibold mb-1 ${
+                      item.highlight ? "text-primary" : "text-foreground"
+                    }`}>
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">{item.description}</p>
                   </div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2">{item.title}</h3>
-                  <p className="text-muted-foreground">{item.description}</p>
                 </div>
               </motion.div>
             ))}
