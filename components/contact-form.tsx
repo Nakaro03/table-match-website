@@ -19,7 +19,7 @@ type FormStatus = "idle" | "submitting" | "success" | "error"
 // bundle); abuse is prevented by the allowed-domains setting on web3forms.com.
 const WEB3FORMS_ACCESS_KEY =
   process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ||
-  "e402eae0-4c93-4cc2-8522-4112d143aef1"
+  "be131cc6-c673-4f3c-a391-284a649941d2"
 
 export function ContactForm() {
   const [formData, setFormData] = useState<FormData>({
