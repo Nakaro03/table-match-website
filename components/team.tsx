@@ -1,8 +1,32 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
-import { Users, Heart } from "lucide-react"
+import { Users, Heart, X, ChevronRight } from "lucide-react"
+import { useState } from "react"
+
+// 福岡支部メンバー（写真・役割・大学はここを編集）
+// 写真は public/images/team/ に保存してください
+export const fukuokaMembers = [
+  {
+    name: "工藤 大西",
+    role: "福岡支部", // ← 役割を記入（例：リーダー / SNS担当 など）
+    university: "", // ← 大学名を記入（例：九州大学 3年）
+    image: "/images/team/fukuoka-1.jpg",
+  },
+  {
+    name: "桑野 櫻子",
+    role: "福岡支部", // ← 役割を記入
+    university: "", // ← 大学名を記入
+    image: "/images/team/fukuoka-2.jpg",
+  },
+  {
+    name: "大西 雄大",
+    role: "福岡支部", // ← 役割を記入
+    university: "", // ← 大学名を記入
+    image: "/images/team/fukuoka-3.jpg",
+  },
+]
 
 // Team data - editable via GitHub
 export const teamMembers = [
@@ -12,6 +36,7 @@ export const teamMembers = [
     university: "筑波大学大学院 情報学学位プログラム M1",
     description: "Table Matchの創設者。学生と企業の新しい出会いの形を追求。",
     image: "/images/representative.jpg",
+    members: null,
   },
   {
     name: "後畠 隼輔",
@@ -19,13 +44,15 @@ export const teamMembers = [
     university: "公立諏訪東京理科大学 情報応用工学科 3年",
     description: "長野エリアの運営を統括。学生集客とイベント企画を担当。",
     image: null,
+    members: null,
   },
   {
-    name: "運営メンバー",
-    role: "福岡支部",
+    name: "福岡支部",
+    role: "運営メンバー",
     university: "九州大学・福岡大学など",
-    description: "SNS運営、営業、司会進行など各分野で活躍するメンバーたち。",
+    description: "SNS運営、営業、司会進行など各分野で活躍するメンバーたち。クリックで紹介を見る。",
     image: null,
+    members: fukuokaMembers,
   },
 ]
 
@@ -52,7 +79,25 @@ function Avatar({ name, image }: { name: string; image: string | null }) {
   )
 }
 
+// Overlapping avatar preview shown on the clickable Fukuoka card
+function MemberStack({ members }: { members: typeof fukuokaMembers }) {
+  return (
+    <div className="flex items-center justify-center -space-x-5">
+      {members.map((m) => (
+        <div
+          key={m.name}
+          className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden ring-4 ring-card shadow-lg bg-secondary"
+        >
+          <Image src={m.image} alt={m.name} fill className="object-cover" />
+        </div>
+      ))}
+    </div>
+  )
+}
+
 export function Team() {
+  const [openMembers, setOpenMembers] = useState<typeof fukuokaMembers | null>(null)
+
   return (
     <section id="team" className="py-24 relative overflow-hidden">
       {/* Background */}
@@ -79,32 +124,115 @@ export function Team() {
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          {teamMembers.map((member, index) => (
-            <motion.div
-              key={member.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-card rounded-3xl p-8 text-center border border-border shadow-lg card-interactive group"
-            >
-              <div className="flex justify-center mb-6">
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <Avatar name={member.name} image={member.image} />
-                </motion.div>
-              </div>
-              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-1">{member.name}</h3>
-              <p className="text-sm font-semibold text-primary mb-2">{member.role}</p>
-              {member.university && (
-                <p className="text-xs text-muted-foreground mb-4">{member.university}</p>
-              )}
-              <p className="text-sm text-muted-foreground leading-relaxed">{member.description}</p>
-            </motion.div>
-          ))}
+          {teamMembers.map((member, index) => {
+            const clickable = !!member.members
+            return (
+              <motion.div
+                key={member.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                onClick={() => clickable && setOpenMembers(member.members)}
+                role={clickable ? "button" : undefined}
+                tabIndex={clickable ? 0 : undefined}
+                onKeyDown={(e) => {
+                  if (clickable && (e.key === "Enter" || e.key === " ")) {
+                    e.preventDefault()
+                    setOpenMembers(member.members)
+                  }
+                }}
+                className={`relative bg-card rounded-3xl p-8 text-center border border-border shadow-lg card-interactive group ${
+                  clickable ? "cursor-pointer ring-1 ring-transparent hover:ring-primary/40 transition" : ""
+                }`}
+              >
+                <div className="flex justify-center mb-6">
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    {clickable ? (
+                      <MemberStack members={member.members!} />
+                    ) : (
+                      <Avatar name={member.name} image={member.image} />
+                    )}
+                  </motion.div>
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold text-foreground mb-1">{member.name}</h3>
+                <p className="text-sm font-semibold text-primary mb-2">{member.role}</p>
+                {member.university && (
+                  <p className="text-xs text-muted-foreground mb-4">{member.university}</p>
+                )}
+                <p className="text-sm text-muted-foreground leading-relaxed">{member.description}</p>
+                {clickable && (
+                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary group-hover:gap-2 transition-all">
+                    メンバーを見る
+                    <ChevronRight className="w-4 h-4" />
+                  </span>
+                )}
+              </motion.div>
+            )
+          })}
         </div>
+
+        {/* Fukuoka members modal */}
+        <AnimatePresence>
+          {openMembers && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setOpenMembers(null)}
+              className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/60 backdrop-blur-sm p-4"
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                transition={{ type: "spring", stiffness: 300, damping: 28 }}
+                onClick={(e) => e.stopPropagation()}
+                className="relative w-full max-w-3xl max-h-[85vh] overflow-y-auto bg-card rounded-3xl p-6 sm:p-10 shadow-2xl border border-border"
+              >
+                <button
+                  onClick={() => setOpenMembers(null)}
+                  aria-label="閉じる"
+                  className="absolute top-4 right-4 flex items-center justify-center w-10 h-10 rounded-full bg-secondary text-muted-foreground hover:bg-muted transition"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+
+                <div className="text-center mb-8">
+                  <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary mb-3">
+                    <Users className="w-4 h-4" />
+                    福岡支部
+                  </span>
+                  <h3 className="text-2xl font-bold text-foreground">運営メンバー紹介</h3>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                  {openMembers.map((m, i) => (
+                    <motion.div
+                      key={m.name}
+                      initial={{ opacity: 0, y: 16 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: i * 0.08 }}
+                      className="text-center"
+                    >
+                      <div className="flex justify-center mb-4">
+                        <Avatar name={m.name} image={m.image} />
+                      </div>
+                      <h4 className="text-lg font-bold text-foreground mb-1">{m.name}</h4>
+                      {m.role && <p className="text-sm font-semibold text-primary">{m.role}</p>}
+                      {m.university && (
+                        <p className="text-xs text-muted-foreground mt-1">{m.university}</p>
+                      )}
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Join us CTA */}
         <motion.div
