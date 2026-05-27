@@ -56,25 +56,40 @@ export const teamMembers = [
   },
 ]
 
-// Avatar component with image support
+function initialsOf(name: string) {
+  return name.split(" ").map((n) => n[0]).join("").slice(0, 2)
+}
+
+// Avatar with image support; falls back to initials if the image is
+// missing or fails to load (e.g. photo not uploaded yet).
 function Avatar({ name, image }: { name: string; image: string | null }) {
-  if (image) {
+  const [failed, setFailed] = useState(false)
+
+  if (image && !failed) {
     return (
       <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden ring-4 ring-primary/20 ring-offset-4 ring-offset-card shadow-xl">
-        <Image
-          src={image}
-          alt={name}
-          fill
-          className="object-cover"
-        />
+        <Image src={image} alt={name} fill className="object-cover" onError={() => setFailed(true)} />
       </div>
     )
   }
-  
-  const initials = name.split(" ").map(n => n[0]).join("").slice(0, 2)
+
   return (
     <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center ring-4 ring-primary/10 ring-offset-4 ring-offset-card shadow-xl">
-      <span className="text-2xl sm:text-3xl font-bold gradient-text">{initials}</span>
+      <span className="text-2xl sm:text-3xl font-bold gradient-text">{initialsOf(name)}</span>
+    </div>
+  )
+}
+
+// One circle in the overlapping preview; also falls back to initials.
+function StackCircle({ name, image }: { name: string; image: string | null }) {
+  const [failed, setFailed] = useState(false)
+  return (
+    <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden ring-4 ring-card shadow-lg bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+      {image && !failed ? (
+        <Image src={image} alt={name} fill className="object-cover" onError={() => setFailed(true)} />
+      ) : (
+        <span className="text-lg font-bold gradient-text">{initialsOf(name)}</span>
+      )}
     </div>
   )
 }
@@ -84,12 +99,7 @@ function MemberStack({ members }: { members: typeof fukuokaMembers }) {
   return (
     <div className="flex items-center justify-center -space-x-5">
       {members.map((m) => (
-        <div
-          key={m.name}
-          className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden ring-4 ring-card shadow-lg bg-secondary"
-        >
-          <Image src={m.image} alt={m.name} fill className="object-cover" />
-        </div>
+        <StackCircle key={m.name} name={m.name} image={m.image} />
       ))}
     </div>
   )
