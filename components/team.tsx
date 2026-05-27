@@ -11,19 +11,19 @@ export const fukuokaMembers = [
   {
     name: "工藤 大西",
     role: "福岡支部", // ← 役割を記入（例：リーダー / SNS担当 など）
-    university: "", // ← 大学名を記入（例：九州大学 3年）
+    university: "福岡医健・スポーツ専門学校3年生", // ← 大学名を記入（例：九州大学 3年）
     image: "/images/team/fukuoka-1.jpg",
   },
   {
     name: "桑野 櫻子",
     role: "福岡支部", // ← 役割を記入
-    university: "", // ← 大学名を記入
+    university: "福岡大学 法学部 2年生", // ← 大学名を記入
     image: "/images/team/fukuoka-2.jpg",
   },
   {
     name: "大西 雄大",
     role: "福岡支部", // ← 役割を記入
-    university: "", // ← 大学名を記入
+    university: "九州大学 農学部 3年生", // ← 大学名を記入
     image: "/images/team/fukuoka-3.jpg",
   },
 ]
