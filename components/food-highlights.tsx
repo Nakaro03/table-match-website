@@ -30,13 +30,6 @@ const foodItems = [
     image: "/images/food/yakiniku.jpg",
     gradient: "from-orange-100 to-red-100",
   },
-  {
-    emoji: "🍶",
-    name: "居酒屋・小料理",
-    desc: "地元の名店でカジュアルに",
-    image: "/images/food/izakaya.jpg",
-    gradient: "from-emerald-100 to-teal-100",
-  },
 ]
 
 function FoodCard({
@@ -112,7 +105,7 @@ export function FoodHighlights() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto">
           {foodItems.map((item, i) => (
             <FoodCard key={item.name} item={item} index={i} />
           ))}
