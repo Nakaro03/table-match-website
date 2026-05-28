@@ -9,22 +9,28 @@ import { useState } from "react"
 // 写真は public/images/team/ に保存してください
 export const fukuokaMembers = [
   {
-    name: "工藤 大西",
-    role: "福岡支部", // ← 役割を記入（例：リーダー / SNS担当 など）
+    name: "工藤 大晴",
+    role: "司会担当", // ← 役割を記入（例：リーダー / SNS担当 など）
     university: "福岡医健・スポーツ専門学校3年生", // ← 大学名を記入（例：九州大学 3年）
     image: "/images/team/fukuoka-1.jpg",
   },
   {
     name: "桑野 櫻子",
-    role: "福岡支部", // ← 役割を記入
+    role: "事務担当", // ← 役割を記入
     university: "福岡大学 法学部 2年生", // ← 大学名を記入
     image: "/images/team/fukuoka-2.jpg",
   },
   {
     name: "大西 雄大",
-    role: "福岡支部", // ← 役割を記入
+    role: "SNS担当", // ← 役割を記入
     university: "九州大学 農学部 3年生", // ← 大学名を記入
     image: "/images/team/fukuoka-3.jpg",
+  },
+  {
+    name: "佐藤悠磨",
+    role: "営業担当", // ← 役割を記入
+    university: "福岡大学 商学部 2年生", // ← 大学名を記入
+    image: "/images/team/fukuoka-4.jpg",
   },
 ]
 
