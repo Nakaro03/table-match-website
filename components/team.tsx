@@ -37,12 +37,13 @@ export const fukuokaMembers = [
     university: "九州大学 農学部 3年生", // ← 大学名を記入
     image: "/images/team/fukuoka-3.jpg",
   },
-  {
-    name: "佐藤悠磨",
-    role: "営業担当", // ← 役割を記入
-    university: "福岡大学 商学部 2年生", // ← 大学名を記入
-    image: "/images/team/fukuoka-4.jpg",
-  },
+  // 佐藤 悠磨さんは一時的に非表示（再表示する場合は下のコメントを外す）
+  // {
+  //   name: "佐藤 悠磨",
+  //   role: "営業担当",
+  //   university: "福岡大学 商学部 2年生",
+  //   image: "/images/team/fukuoka-4.jpg",
+  // },
 ]
 
 // Team data - editable via GitHub
