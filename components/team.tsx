@@ -37,13 +37,12 @@ export const fukuokaMembers = [
     university: "九州大学 農学部 3年生", // ← 大学名を記入
     image: "/images/team/fukuoka-3.jpg",
   },
-  // 佐藤 悠磨さんは一時的に非表示（再表示する場合は下のコメントを外す）
-  // {
-  //   name: "佐藤 悠磨",
-  //   role: "営業担当",
-  //   university: "福岡大学 商学部 2年生",
-  //   image: "/images/team/fukuoka-4.jpg",
-  // },
+  {
+    name: "佐藤 悠磨",
+    role: "営業担当",
+    university: "福岡大学 商学部 2年生",
+    image: "/images/team/fukuoka-4.jpg",
+  },
 ]
 
 // Team data - editable via GitHub
@@ -112,11 +111,14 @@ function StackCircle({ name, image }: { name: string; image: string | null }) {
   )
 }
 
-// Overlapping avatar preview shown on the clickable Fukuoka card
+// Overlapping avatar preview shown on the clickable card.
+// Caps the visible circles at 3 so the layout stays compact; click the
+// card to see everyone in the modal.
+const PREVIEW_LIMIT = 3
 function MemberStack({ members }: { members: typeof fukuokaMembers }) {
   return (
     <div className="flex items-center justify-center -space-x-5">
-      {members.map((m) => (
+      {members.slice(0, PREVIEW_LIMIT).map((m) => (
         <StackCircle key={m.name} name={m.name} image={m.image} />
       ))}
     </div>
