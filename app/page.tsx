@@ -1,6 +1,7 @@
 import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
 import { Concept } from "@/components/concept"
+import { FoodHighlights } from "@/components/food-highlights"
 import { Events } from "@/components/events"
 import { Program } from "@/components/program"
 import { Achievements } from "@/components/achievements"
@@ -16,6 +17,7 @@ export default function Home() {
       <Header />
       <Hero />
       <Concept />
+      <FoodHighlights />
       <Events />
       <Program />
       <Achievements />
