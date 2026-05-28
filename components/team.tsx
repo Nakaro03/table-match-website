@@ -7,6 +7,17 @@ import { useState } from "react"
 
 // 福岡支部メンバー（写真・役割・大学はここを編集）
 // 写真は public/images/team/ に保存してください
+export const naganoMembers = [
+  {
+    name: "後畠 隼輔",
+    role: "事務担当", // ← 役割を記入（例：リーダー / SNS担当 など）
+    university: "公立諏訪東京理科大学 情報応用工学科 3年", // ← 大学名を記入（例：九州大学 3年）
+    image: "/images/team/nagano-1.jpg",
+  },
+]
+
+// 福岡支部メンバー（写真・役割・大学はここを編集）
+// 写真は public/images/team/ に保存してください
 export const fukuokaMembers = [
   {
     name: "工藤 大晴",
@@ -45,12 +56,12 @@ export const teamMembers = [
     members: null,
   },
   {
-    name: "後畠 隼輔",
-    role: "長野支部リーダー",
-    university: "公立諏訪東京理科大学 情報応用工学科 3年",
-    description: "長野エリアの運営を統括。学生集客とイベント企画を担当。",
+    name: "長野支部",
+    role: "運営メンバー",
+    university: "公立諏訪東京理科大学",
+    description: "学生集客とイベント企画で活躍するメンバーたち。クリックで紹介を見る。",
     image: null,
-    members: null,
+    members: naganoMembers,
   },
   {
     name: "福岡支部",
