@@ -5,7 +5,6 @@ import { FoodHighlights } from "@/components/food-highlights"
 import { Events } from "@/components/events"
 import { Program } from "@/components/program"
 import { Achievements } from "@/components/achievements"
-import { ForCompanies } from "@/components/for-companies"
 import { Team } from "@/components/team"
 import { Testimonials } from "@/components/testimonials"
 import { ContactForm } from "@/components/contact-form"
@@ -21,7 +20,6 @@ export default function Home() {
       <Events />
       <Program />
       <Achievements />
-      <ForCompanies />
       <Team />
       <Testimonials />
       <ContactForm />

@@ -8,11 +8,11 @@ import { Button } from "@/components/ui/button"
 import { motion, AnimatePresence } from "framer-motion"
 
 const navItems = [
-  { label: "コンセプト", href: "#concept" },
-  { label: "イベント", href: "#events" },
-  { label: "実績", href: "#achievements" },
-  { label: "企業様向け", href: "#for-companies" },
-  { label: "運営チーム", href: "#team" },
+  { label: "コンセプト", href: "/#concept" },
+  { label: "イベント", href: "/#events" },
+  { label: "実績", href: "/#achievements" },
+  { label: "運営チーム", href: "/#team" },
+  { label: "企業様", href: "/for-companies" },
 ]
 
 export function Header() {

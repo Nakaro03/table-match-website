@@ -69,7 +69,7 @@ export function Hero() {
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <Link href="#for-companies">企業様はこちら</Link>
+                <Link href="/for-companies">企業様はこちら</Link>
               </Button>
             </motion.div>
 

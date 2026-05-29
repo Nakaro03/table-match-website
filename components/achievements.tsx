@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Award, TrendingUp, Tv, Star, ExternalLink } from "lucide-react"
+import { Award, Tv, Star, ExternalLink } from "lucide-react"
 import Link from "next/link"
 
 const achievements = [
@@ -14,11 +14,6 @@ const achievements = [
     icon: Star,
     title: "企業満足度100%",
     description: "諏訪・福岡両開催において、参加企業様からの満足度評価で100%を達成。",
-  },
-  {
-    icon: TrendingUp,
-    title: "ROI 836%以上",
-    description: "通常の採用単価（約93.6万円）と比較し、圧倒的なコストパフォーマンスを実現。",
   },
 ]
 
@@ -89,7 +84,7 @@ export function Achievements() {
           </Link>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 max-w-3xl mx-auto">
           {achievements.map((item, index) => (
             <motion.div
               key={item.title}
