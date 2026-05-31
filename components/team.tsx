@@ -13,13 +13,7 @@ export const naganoMembers = [
     role: "事務担当", // ← 役割を記入（例：リーダー / SNS担当 など）
     university: "公立諏訪東京理科大学 情報応用工学科 3年", // ← 大学名を記入（例：九州大学 3年）
     image: "/images/team/nagano-1.jpg",
-  },
-  {
-    name: "荒引くん",
-    role: "事務担当", // ← 役割を記入（例：リーダー / SNS担当 など）
-    university: "公立諏訪東京理科大学 情報応用工学科 3年", // ← 大学名を記入（例：九州大学 3年）
-    image: "/images/team/nagano-1.jpg",
-  },
+  }
 ]
 
 // 福岡支部メンバー（写真・役割・大学はここを編集）
