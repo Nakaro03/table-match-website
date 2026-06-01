@@ -322,8 +322,8 @@ function TiltCard() {
             className="mt-4 space-y-3 text-sm text-neutral-300"
             style={{ fontFamily: "var(--font-noto-sans-jp), sans-serif" }}
           >
-            <Row icon={<Calendar className="h-4 w-4 text-sky-400" />} label="2026年6月20日（土）" />
-            <Row icon={<Clock className="h-4 w-4 text-sky-400" />} label="17:00〜21:00" />
+            <Row icon={<Calendar className="h-4 w-4 text-sky-400" />} label="2026年6月21日（日）" />
+            <Row icon={<Clock className="h-4 w-4 text-sky-400" />} label="11:00〜15:00" />
             <Row icon={<MapPin className="h-4 w-4 text-sky-400" />} label="四季の色（福岡市）" />
           </div>
           <span className="mt-5 flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-500 py-3 font-semibold text-white">

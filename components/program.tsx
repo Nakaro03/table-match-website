@@ -5,44 +5,44 @@ import { Clock, Users, Building2, Coffee, MessageCircle, Camera, PartyPopper } f
 
 const programItems = [
   {
-    time: "17:00",
+    time: "11:00",
     title: "オープニング",
     description: "目的共有・チーム紹介",
     icon: Users,
   },
   {
-    time: "17:15",
+    time: "11:15",
     title: "自己分析",
     description: "自分の強みや今やりたいことを整理しアイスブレイク",
     icon: Clock,
   },
   {
-    time: "17:45",
+    time: "11:45",
     title: "企業説明",
     description: "参加企業4社が会社の魅力をプレゼン",
     icon: Building2,
   },
   {
-    time: "18:25",
+    time: "12:25",
     title: "休憩",
     description: "お菓子でひと息",
     icon: Coffee,
   },
   {
-    time: "18:40",
+    time: "12:40",
     title: "シャッフル座談会",
     description: "社長と本音で語る",
     icon: MessageCircle,
     highlight: true,
   },
   {
-    time: "19:40",
+    time: "13:40",
     title: "閉会式",
     description: "全体で記念撮影",
     icon: Camera,
   },
   {
-    time: "20:00",
+    time: "14:00",
     title: "交流会",
     description: "デザート片手に自由に交流",
     icon: PartyPopper,

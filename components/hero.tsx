@@ -132,7 +132,7 @@ export function Hero() {
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground">日程</p>
-                      <p className="text-foreground font-medium">2026年6月20日（土）</p>
+                      <p className="text-foreground font-medium">2026年6月21日（日）</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
@@ -141,7 +141,7 @@ export function Hero() {
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground">時間</p>
-                      <p className="text-foreground font-medium">17:00〜21:00</p>
+                      <p className="text-foreground font-medium">11:00〜15:00</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
