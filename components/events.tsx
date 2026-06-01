@@ -11,8 +11,8 @@ export const upcomingEvents = [
   {
     id: 1,
     title: "第4回 Table Match 福岡",
-    date: "2026年6月20日（土）",
-    time: "17:00〜21:00",
+    date: "2026年6月21日（日）",
+    time: "11:00〜15:00",
     location: "四季の色（福岡市）",
     description: "社長の『成功』を追体験し、社長の『脳内』を覗ける、本音の人生戦略会議",
     capacity: 20,
