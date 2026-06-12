@@ -26,6 +26,12 @@ export const naganoMembers = [
     university: "公立諏訪東京理科大学 情報応用工学科 3年", // ← 大学名を記入（例：九州大学 3年）
     image: "/images/team/nagano-3.jpg",
   },
+  {
+    name: "小笠原 春樹",
+    role: "司会担当", // ← 役割を記入（例：リーダー / SNS担当 など）
+    university: "公立諏訪東京理科大学 機械電気工学科 2年", // ← 大学名を記入（例：九州大学 3年）
+    image: "/images/team/nagano-4.jpg",
+  },
 ]
 
 // 福岡支部メンバー（写真・役割・大学はここを編集）
