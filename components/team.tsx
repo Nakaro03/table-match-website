@@ -32,6 +32,12 @@ export const naganoMembers = [
     university: "公立諏訪東京理科大学 機械電気工学科 2年", // ← 大学名を記入（例：九州大学 3年）
     image: "/images/team/nagano-4.jpg",
   },
+  {
+    name: "置 未寛",
+    role: "Web開発担当", // ← 役割を記入（例：リーダー / SNS担当 など）
+    university: "公立諏訪東京理科大学 情報応用工学科 1年", // ← 大学名を記入（例：九州大学 3年）
+    image: "/images/team/nagano-5.jpg",
+  },
 ]
 
 // 福岡支部メンバー（写真・役割・大学はここを編集）
