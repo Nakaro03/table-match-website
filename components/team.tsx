@@ -67,6 +67,12 @@ export const fukuokaMembers = [
     university: "九州産業大学 商学部 2年生",
     image: "/images/team/fukuoka-5.jpg",
   },
+  {
+    name: "西岡 恭侑",
+    role: "営業担当",
+    university: "福岡大学 理学部 地球科学科 2年生",
+    image: "/images/team/fukuoka-6.jpg",
+  }
 ]
 
 // Team data - editable via GitHub
