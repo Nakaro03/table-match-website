@@ -305,7 +305,7 @@ function TiltCard() {
           className="pointer-events-none absolute inset-0 z-20 rounded-3xl"
         />
         <div className="relative h-52 overflow-hidden rounded-2xl">
-          <Image src="/images/event-photo.jpg" alt="" fill className="object-cover" />
+          <Image src="/images/event-4.jpg" alt="" fill className="object-cover" />
           <span className="absolute left-3 top-3 rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 px-3 py-1 text-xs font-semibold text-white">
             参加者募集中
           </span>
