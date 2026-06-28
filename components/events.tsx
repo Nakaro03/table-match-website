@@ -110,7 +110,7 @@ export function Events() {
                 {/* Image section */}
                 <div className="lg:col-span-2 relative h-64 lg:h-auto min-h-[300px]">
                   <Image
-                    src="/images/event-4.jpg"
+                    src="/images/event-5.jpg"
                     alt={event.title}
                     fill
                     className="object-cover"

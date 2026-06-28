@@ -103,7 +103,7 @@ export function Hero() {
               {/* Event image */}
               <div className="relative h-48 sm:h-56">
                 <Image
-                  src="/images/event-4.jpg"
+                  src="/images/event-5.jpg"
                   alt="Table Match イベントの様子"
                   fill
                   className="object-cover"
