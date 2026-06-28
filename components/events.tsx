@@ -9,20 +9,29 @@ import { Button } from "@/components/ui/button"
 // Events data - editable via GitHub
 export const upcomingEvents = [
   {
-    id: 1,
-    title: "第4回 Table Match 福岡",
-    date: "2026年6月21日（日）",
-    time: "11:00〜15:00",
-    location: "四季の色（福岡市）",
-    description: "社長の『成功』を追体験し、社長の『脳内』を覗ける、本音の人生戦略会議",
-    capacity: 20,
-    targetAudience: ["アルバイトやインターンを探している学生", "就活準備中", "起業に興味ある方"],
+    id: 5,
+    title: "第5回 Table Match 長野",
+    date: "2026年7月17日（金）",
+    time: "17:00〜21:00",
+    location: "Kiitos（茅野市・茅野駅から徒歩2分）",
+    description: "関東就職やAI・DX・ITに関心のある学生向けの少人数交流会。参加予定企業は株式会社K2Tプランニング様。参加費無料・服装自由です。",
+    capacity: "15〜20",
+    targetAudience: ["関東に就職したい学生", "AI・DX・ITに興味のある学生", "28・29卒の学生"],
     status: "募集中",
-    applicationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfDHhkJ9dfnQ83kTyQ72CwSr2fs9QKICf7IW3xrBz3l0xZDlA/viewform",
+    applicationUrl: "https://docs.google.com/forms/d/e/1FAIpQLScpOMAD68RcdymZX1IZT2fdMkDA0-rplU1FXJps6mlB_BtLGQ/viewform",
   },
 ]
 
 export const pastEvents = [
+  {
+    id: 4,
+    title: "第4回 Table Match 福岡",
+    date: "2026年6月21日（日）",
+    location: "四季の色（福岡市）",
+    companies: ["株式会社くじら", "プランタンホテルグループ"],
+    participants: 20,
+    image: "/images/event-4.jpg",
+  },
   {
     id: 3,
     title: "第3回 Table Match 長野",
@@ -39,7 +48,7 @@ export const pastEvents = [
     location: "福岡市",
     companies: ["プランタンホテルグループ", "ハートアロー"],
     participants: 20,
-    image: "/images/event-photo.jpg",
+    image: "/images/event-2.jpg",
   },
   {
     id: 1,
@@ -101,7 +110,7 @@ export function Events() {
                 {/* Image section */}
                 <div className="lg:col-span-2 relative h-64 lg:h-auto min-h-[300px]">
                   <Image
-                    src="/images/event-photo.jpg"
+                    src="/images/event-4.jpg"
                     alt={event.title}
                     fill
                     className="object-cover"

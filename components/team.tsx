@@ -156,7 +156,7 @@ function MemberStack({ members }: { members: typeof fukuokaMembers }) {
 }
 
 export function Team() {
-  const [openMembers, setOpenMembers] = useState<typeof fukuokaMembers | null>(null)
+  const [openBranch, setOpenBranch] = useState<{ name: string; members: typeof fukuokaMembers } | null>(null)
 
   return (
     <section id="team" className="py-24 relative overflow-hidden">
@@ -193,13 +193,13 @@ export function Team() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                onClick={() => clickable && setOpenMembers(member.members)}
+                onClick={() => clickable && setOpenBranch({ name: member.name, members: member.members! })}
                 role={clickable ? "button" : undefined}
                 tabIndex={clickable ? 0 : undefined}
                 onKeyDown={(e) => {
                   if (clickable && (e.key === "Enter" || e.key === " ")) {
                     e.preventDefault()
-                    setOpenMembers(member.members)
+                    setOpenBranch({ name: member.name, members: member.members! })
                   }
                 }}
                 className={`relative bg-card rounded-3xl p-8 text-center border border-border shadow-lg card-interactive group ${
@@ -235,14 +235,14 @@ export function Team() {
           })}
         </div>
 
-        {/* Fukuoka members modal */}
+        {/* Branch members modal */}
         <AnimatePresence>
-          {openMembers && (
+          {openBranch && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setOpenMembers(null)}
+              onClick={() => setOpenBranch(null)}
               className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/60 backdrop-blur-sm p-4"
             >
               <motion.div
@@ -254,7 +254,7 @@ export function Team() {
                 className="relative w-full max-w-3xl max-h-[85vh] overflow-y-auto bg-card rounded-3xl p-6 sm:p-10 shadow-2xl border border-border"
               >
                 <button
-                  onClick={() => setOpenMembers(null)}
+                  onClick={() => setOpenBranch(null)}
                   aria-label="閉じる"
                   className="absolute top-4 right-4 flex items-center justify-center w-10 h-10 rounded-full bg-secondary text-muted-foreground hover:bg-muted transition"
                 >
@@ -264,13 +264,13 @@ export function Team() {
                 <div className="text-center mb-8">
                   <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary mb-3">
                     <Users className="w-4 h-4" />
-                    福岡支部
+                    {openBranch.name}
                   </span>
                   <h3 className="text-2xl font-bold text-foreground">運営メンバー紹介</h3>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                  {openMembers.map((m, i) => (
+                  {openBranch.members.map((m, i) => (
                     <motion.div
                       key={m.name}
                       initial={{ opacity: 0, y: 16 }}

@@ -103,7 +103,7 @@ export function Hero() {
               {/* Event image */}
               <div className="relative h-48 sm:h-56">
                 <Image
-                  src="/images/event-photo.jpg"
+                  src="/images/event-4.jpg"
                   alt="Table Match イベントの様子"
                   fill
                   className="object-cover"
@@ -123,7 +123,7 @@ export function Hero() {
                   Next Event
                 </p>
                 <h3 className="text-xl font-bold text-foreground mb-4">
-                  第4回 Table Match 福岡
+                  第5回 Table Match 長野
                 </h3>
                 <div className="space-y-3 text-sm">
                   <div className="flex items-center gap-3">
@@ -132,7 +132,7 @@ export function Hero() {
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground">日程</p>
-                      <p className="text-foreground font-medium">2026年6月21日（日）</p>
+                      <p className="text-foreground font-medium">2026年7月17日（金）</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
@@ -141,7 +141,7 @@ export function Hero() {
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground">時間</p>
-                      <p className="text-foreground font-medium">11:00〜15:00</p>
+                      <p className="text-foreground font-medium">17:00〜21:00</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
@@ -150,14 +150,14 @@ export function Hero() {
                     </div>
                     <div>
                       <p className="text-xs text-muted-foreground">会場</p>
-                      <p className="text-foreground font-medium">四季の色（福岡市）</p>
+                      <p className="text-foreground font-medium">Kiitos（茅野市）</p>
                     </div>
                   </div>
                 </div>
                 
                 <div className="mt-5">
                   <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold" asChild>
-                    <Link href="https://docs.google.com/forms/d/e/1FAIpQLSfDHhkJ9dfnQ83kTyQ72CwSr2fs9QKICf7IW3xrBz3l0xZDlA/viewform" target="_blank" rel="noopener noreferrer">
+                    <Link href="https://docs.google.com/forms/d/e/1FAIpQLScpOMAD68RcdymZX1IZT2fdMkDA0-rplU1FXJps6mlB_BtLGQ/viewform" target="_blank" rel="noopener noreferrer">
                       参加申し込み
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
