@@ -58,14 +58,18 @@ export function Program() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          className="text-center mb-14"
         >
-          <p className="text-sm font-medium text-primary mb-2">TIMETABLE</p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <span className="h-px w-10 bg-primary" />
+            <span className="label-eyebrow text-xs text-primary">Timetable</span>
+            <span className="h-px w-10 bg-primary" />
+          </div>
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-3">
             当日のながれ
           </h2>
           <p className="text-muted-foreground">
-            メインは「社長×学生」のシャッフル座談会!
+            メインは「社長 &times; 学生」のシャッフル座談会。
           </p>
         </motion.div>
 

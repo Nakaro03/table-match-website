@@ -177,15 +177,16 @@ export function Team() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary mb-4">
-            <Users className="w-4 h-4" />
-            Team
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <span className="h-px w-10 bg-primary" />
+            <span className="label-eyebrow text-xs text-primary">Team</span>
+            <span className="h-px w-10 bg-primary" />
+          </div>
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             運営チーム
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            学生が主体となって運営しています
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            学生が主体となって運営しています。
           </p>
         </motion.div>
 

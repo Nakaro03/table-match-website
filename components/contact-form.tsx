@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { Send, CheckCircle, AlertCircle, Mail, MessageSquare } from "lucide-react"
+import { Send, CheckCircle, AlertCircle, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 type FormData = {
@@ -121,14 +121,15 @@ ${formData.message}
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm font-medium text-muted-foreground mb-4">
-            <MessageSquare className="w-4 h-4 text-primary" />
-            Contact
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <span className="h-px w-10 bg-primary" />
+            <span className="label-eyebrow text-xs text-primary">Contact</span>
+            <span className="h-px w-10 bg-primary" />
+          </div>
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             お問い合わせ
           </h2>
-          <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+          <p className="text-muted-foreground max-w-xl mx-auto">
             イベント参加や出展に関するお問い合わせはこちらから
           </p>
         </motion.div>
