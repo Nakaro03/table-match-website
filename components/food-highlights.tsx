@@ -5,31 +5,32 @@ import Image from "next/image"
 import { useState } from "react"
 
 // 学生向けの "食事の楽しみ" 訴求。
+// 具体的な料理には言及せず、ジャンルだけを提示。
 // メニュー写真を public/images/food/ にアップロードすると自動で差し替わります。
 const foodItems = [
   {
     no: "01",
-    name: "鮨・和食",
-    desc: "落ち着いた席で、ホンネの会話を。",
+    name: "寿司",
+    desc: "回によって、いろんなジャンルを。",
     image: "/images/food/sushi.jpg",
     fallback: "🍣",
-    gradient: "from-rose-100 to-amber-100",
+    gradient: "from-sky-100 to-blue-100",
   },
   {
     no: "02",
-    name: "イタリアン",
-    desc: "ピザ・パスタをシェアして気軽に。",
+    name: "ピザ",
+    desc: "シェアして、気軽に盛り上がる。",
     image: "/images/food/pizza.jpg",
     fallback: "🍕",
-    gradient: "from-amber-100 to-orange-100",
+    gradient: "from-blue-100 to-indigo-100",
   },
   {
     no: "03",
-    name: "焼肉・グリル",
-    desc: "炭火を囲んで盛り上がる夜。",
-    image: "/images/food/yakiniku.jpg",
-    fallback: "🥩",
-    gradient: "from-orange-100 to-red-100",
+    name: "スイーツ",
+    desc: "デザートまで、みんなで楽しく。",
+    image: "/images/food/sweets.jpg",
+    fallback: "🍰",
+    gradient: "from-indigo-100 to-sky-100",
   },
 ]
 
@@ -103,6 +104,31 @@ export function FoodHighlights() {
             会場や料理は回によって変わります。
           </motion.p>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6 mb-14"
+        >
+          <div className="relative aspect-[4/3] sm:col-span-2 overflow-hidden rounded-[1.5rem] border border-border shadow-sm">
+            <Image
+              src="/images/real/students-table.jpg"
+              alt="テーブルを囲んで食事を楽しむ学生たち"
+              fill
+              className="object-cover"
+            />
+          </div>
+          <div className="relative aspect-[4/3] sm:aspect-auto overflow-hidden rounded-[1.5rem] border border-border shadow-sm">
+            <Image
+              src="/images/real/student-smile.jpg"
+              alt="料理を手に笑顔の学生"
+              fill
+              className="object-cover"
+            />
+          </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6">
           {foodItems.map((item, i) => (

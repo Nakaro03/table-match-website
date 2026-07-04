@@ -35,7 +35,10 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
           <Link href="/" className="group">
-            <Logo className="text-lg sm:text-xl transition-transform group-hover:-translate-y-0.5" />
+            <Logo
+              light={!isScrolled}
+              className="text-lg sm:text-xl transition-transform group-hover:-translate-y-0.5"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -44,9 +47,17 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="group relative text-sm font-medium text-foreground/70 hover:text-foreground transition-colors"
+                className={`group relative text-sm font-medium transition-colors ${
+                  isScrolled
+                    ? "text-foreground/70 hover:text-foreground"
+                    : "text-background/80 hover:text-background"
+                }`}
               >
-                <span className="mr-1 text-[0.6rem] font-mono text-primary/70 align-super">
+                <span
+                  className={`mr-1 text-[0.6rem] font-mono align-super ${
+                    isScrolled ? "text-primary/70" : "text-background/70"
+                  }`}
+                >
                   {item.num}
                 </span>
                 {item.label}
@@ -58,7 +69,11 @@ export function Header() {
           <div className="hidden md:flex items-center">
             <Link
               href="#contact"
-              className="group inline-flex items-center gap-1.5 rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background transition-colors hover:bg-primary"
+              className={`group inline-flex items-center gap-1.5 rounded-full px-5 py-2.5 text-sm font-medium transition-colors ${
+                isScrolled
+                  ? "bg-foreground text-background hover:bg-primary"
+                  : "bg-background text-foreground hover:bg-primary hover:text-primary-foreground"
+              }`}
             >
               お問い合わせ
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

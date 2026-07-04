@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter, Space_Grotesk, Noto_Sans_JP, Shippori_Mincho, M_PLUS_Rounded_1c } from 'next/font/google'
+import { Inter, Space_Grotesk, Noto_Sans_JP, Shippori_Mincho, M_PLUS_Rounded_1c, Zen_Kaku_Gothic_New } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
@@ -32,6 +32,13 @@ const mPlusRounded = M_PLUS_Rounded_1c({
   variable: "--font-rounded"
 });
 
+// Modern gothic display face used for headings
+const zenKaku = Zen_Kaku_Gothic_New({
+  subsets: ["latin"],
+  weight: ["500", "700", "900"],
+  variable: "--font-zen"
+});
+
 export const metadata: Metadata = {
   title: 'Table Match | 学生と企業をつなぐ採用イベント',
   description: '学生団体Table Matchは、長野・福岡で学生と経営者が本音で語り合えるカジュアルな採用マッチングイベントを運営しています。',
@@ -49,7 +56,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ja" className={`${inter.variable} ${spaceGrotesk.variable} ${notoSansJP.variable} ${shipporiMincho.variable} ${mPlusRounded.variable} bg-background`}>
+    <html lang="ja" className={`${inter.variable} ${spaceGrotesk.variable} ${notoSansJP.variable} ${shipporiMincho.variable} ${mPlusRounded.variable} ${zenKaku.variable} bg-background`}>
       <body className="font-sans antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}

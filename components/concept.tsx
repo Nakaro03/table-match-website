@@ -103,7 +103,7 @@ export function Concept() {
               />
             </div>
             <div className="absolute -bottom-5 left-5 right-5 rounded-2xl border border-border bg-card/95 px-5 py-4 shadow-lg backdrop-blur sm:left-8 sm:right-auto sm:max-w-xs">
-              <p className="font-serif text-sm font-bold text-foreground leading-snug">
+              <p className="font-sans text-base font-bold text-foreground leading-snug">
                 「やりがいは、自分で創る。」
               </p>
               <p className="mt-1 text-xs text-muted-foreground">
