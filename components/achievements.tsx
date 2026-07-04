@@ -1,18 +1,19 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Award, Tv, Star, ExternalLink } from "lucide-react"
+import { Tv, ArrowUpRight } from "lucide-react"
 import Link from "next/link"
 
 const achievements = [
   {
-    icon: Award,
-    title: "インターン採用2名",
-    description: "福岡開催にて、プランタンホテルグループへの長期インターンシップ生の採用が決定。うち1名は上場企業の選考を辞退して参画。",
+    no: "01",
+    title: "インターン採用 2名",
+    description:
+      "福岡開催にて、プランタンホテルグループへの長期インターンシップ生の採用が決定。うち1名は上場企業の選考を辞退して参画。",
   },
   {
-    icon: Star,
-    title: "企業満足度100%",
+    no: "02",
+    title: "企業満足度 100%",
     description: "諏訪・福岡両開催において、参加企業様からの満足度評価で100%を達成。",
   },
 ]
@@ -30,104 +31,95 @@ const companies = [
 
 export function Achievements() {
   return (
-    <section id="achievements" className="py-20 bg-background">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="achievements" className="py-24 sm:py-32 bg-secondary/50 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-14"
+        >
+          <div className="flex items-center gap-3 mb-6">
+            <span className="h-px w-10 bg-primary" />
+            <span className="label-eyebrow text-xs text-primary">Results</span>
+          </div>
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground text-balance">
+            確かな成果が、生まれています。
+          </h2>
+        </motion.div>
+
+        {/* TV coverage */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
-          <p className="text-sm font-medium text-primary mb-2">RESULTS</p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">
-            実績と成果
-          </h2>
-          <p className="text-muted-foreground">
-            Table Matchが生み出した確かな結果
-          </p>
-        </motion.div>
-
-        {/* TV Coverage Banner */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
           className="mb-10"
         >
-          <Link 
+          <Link
             href="http://vod.lcv.ne.jp/iPhone/detail?movid=10016857&pg=0&channelname=LCV"
             target="_blank"
             rel="noopener noreferrer"
-            className="block"
+            className="group block overflow-hidden rounded-2xl bg-foreground p-6 sm:p-8 text-background transition-colors hover:bg-primary"
           >
-            <div className="bg-primary text-primary-foreground rounded-lg p-6 card-hover cursor-pointer">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="p-3 bg-primary-foreground/10 rounded-lg">
-                    <Tv className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg">テレビ取材されました</h3>
-                    <p className="text-primary-foreground/80 text-sm">
-                      LCV（長野県諏訪地域）にて密着取材・ニュース放映
-                    </p>
-                  </div>
+            <div className="flex items-center justify-between gap-4">
+              <div className="flex items-center gap-4">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-background/10">
+                  <Tv className="h-6 w-6" />
                 </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <span className="hidden sm:inline">動画を見る</span>
-                  <ExternalLink className="h-4 w-4" />
+                <div>
+                  <h3 className="font-serif text-lg font-bold">テレビ取材されました</h3>
+                  <p className="text-sm text-background/70">
+                    LCV（長野県諏訪地域）にて密着取材・ニュース放映
+                  </p>
                 </div>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <span className="hidden sm:inline">動画を見る</span>
+                <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </div>
             </div>
           </Link>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 max-w-3xl mx-auto">
+        {/* Achievement cards */}
+        <div className="mb-16 grid grid-cols-1 md:grid-cols-2 gap-6">
           {achievements.map((item, index) => (
             <motion.div
-              key={item.title}
-              initial={{ opacity: 0, y: 16 }}
+              key={item.no}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="bg-card rounded-lg p-6 border border-border card-hover"
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="rounded-2xl border border-border bg-card p-7 card-hover"
             >
-              <div className="p-2 bg-secondary rounded-md w-fit mb-4">
-                <item.icon className="h-5 w-5 text-primary" />
-              </div>
-              <h3 className="font-semibold text-foreground mb-2">{item.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+              <span className="font-mono text-sm text-primary/70">{item.no}</span>
+              <h3 className="mt-2 font-serif text-xl font-bold text-foreground">{item.title}</h3>
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                {item.description}
+              </p>
             </motion.div>
           ))}
         </div>
-
-        {/* Participating Companies */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center"
-        >
-          <h3 className="text-sm font-medium text-muted-foreground mb-4">参加企業様</h3>
-          <div className="flex flex-wrap justify-center gap-2">
-            {companies.map((company, index) => (
-              <motion.span
-                key={company}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: index * 0.03 }}
-                className="px-3 py-1.5 bg-secondary border border-border rounded-md text-sm text-foreground"
-              >
-                {company}
-              </motion.span>
-            ))}
-          </div>
-        </motion.div>
       </div>
+
+      {/* Company marquee */}
+      <div className="border-y border-border py-5 marquee-mask">
+        <div className="flex w-max animate-marquee">
+          {[...companies, ...companies].map((company, i) => (
+            <span
+              key={i}
+              className="mx-5 inline-flex items-center gap-5 font-serif text-lg text-foreground/70"
+            >
+              {company}
+              <span className="h-1.5 w-1.5 rounded-full bg-primary/50" />
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <p className="mt-6 text-center text-sm text-muted-foreground">参加企業様</p>
     </section>
   )
 }

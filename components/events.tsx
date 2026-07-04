@@ -1,10 +1,9 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Calendar, MapPin, Clock, Users, ArrowRight, Sparkles, Camera } from "lucide-react"
+import { Calendar, MapPin, Clock, Users, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
-import { Button } from "@/components/ui/button"
 
 // Events data - editable via GitHub
 export const upcomingEvents = [
@@ -14,11 +13,13 @@ export const upcomingEvents = [
     date: "2026年7月17日（金）",
     time: "17:00〜21:00",
     location: "Kiitos（茅野市・茅野駅から徒歩2分）",
-    description: "関東就職やAI・DX・ITに関心のある学生向けの少人数交流会。参加予定企業は株式会社K2Tプランニング様。参加費無料・服装自由です。",
+    description:
+      "関東就職やAI・DX・ITに関心のある学生向けの少人数交流会。参加予定企業は株式会社K2Tプランニング様。参加費無料・服装自由です。",
     capacity: "15〜20",
     targetAudience: ["関東に就職したい学生", "AI・DX・ITに興味のある学生", "28・29卒の学生"],
     status: "募集中",
-    applicationUrl: "https://docs.google.com/forms/d/e/1FAIpQLScpOMAD68RcdymZX1IZT2fdMkDA0-rplU1FXJps6mlB_BtLGQ/viewform",
+    applicationUrl:
+      "https://docs.google.com/forms/d/e/1FAIpQLScpOMAD68RcdymZX1IZT2fdMkDA0-rplU1FXJps6mlB_BtLGQ/viewform",
   },
 ]
 
@@ -63,183 +64,161 @@ export const pastEvents = [
 
 export function Events() {
   return (
-    <section id="events" className="py-24 relative overflow-hidden bg-muted/30">
-      {/* Background */}
-      <div className="absolute inset-0 bg-dots opacity-50" />
-      
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="events" className="py-24 sm:py-32 bg-background">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-14"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary mb-4">
-            <Calendar className="w-4 h-4" />
-            Events
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="h-px w-10 bg-primary" />
+            <span className="label-eyebrow text-xs text-primary">Events</span>
+          </div>
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground text-balance">
             イベント情報
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            直近の開催予定と過去の実績をご紹介します
+          <p className="mt-4 text-muted-foreground max-w-xl">
+            直近の開催予定と、これまでの実績をご紹介します。
           </p>
         </motion.div>
 
-        {/* Upcoming Events */}
-        <div className="mb-20">
+        {/* Upcoming */}
+        <div className="mb-24">
           <div className="flex items-center gap-3 mb-8">
             <span className="relative flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-accent"></span>
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
+              <span className="relative inline-flex h-3 w-3 rounded-full bg-primary" />
             </span>
-            <h3 className="text-xl font-bold text-foreground">次回開催</h3>
+            <h3 className="font-serif text-xl font-bold text-foreground">次回開催</h3>
           </div>
-          
-          {upcomingEvents.map((event, index) => (
+
+          {upcomingEvents.map((event) => (
             <motion.div
               key={event.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-card rounded-3xl overflow-hidden border border-border shadow-xl shadow-primary/5 card-interactive"
+              transition={{ duration: 0.7 }}
+              className="overflow-hidden rounded-[1.75rem] border border-border bg-card shadow-xl shadow-foreground/5"
             >
-              <div className="grid lg:grid-cols-5 gap-0">
-                {/* Image section */}
-                <div className="lg:col-span-2 relative h-64 lg:h-auto min-h-[300px]">
-                  <Image
-                    src="/images/event-5.jpg"
-                    alt={event.title}
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-card/90 lg:block hidden" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent lg:hidden" />
-                  <div className="absolute top-4 left-4">
-                    <span className="inline-flex items-center gap-1.5 px-4 py-2 bg-accent text-accent-foreground text-sm font-bold rounded-full shadow-lg animate-pulse-glow">
-                      <Sparkles className="w-4 h-4" />
+              <div className="grid lg:grid-cols-5">
+                <div className="relative h-64 lg:h-auto lg:col-span-2 min-h-[320px]">
+                  <Image src="/images/event-5.jpg" alt={event.title} fill className="object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/50 via-transparent to-transparent" />
+                  <div className="absolute left-5 top-5">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-1.5 text-sm font-semibold text-primary-foreground shadow-lg">
                       {event.status}
                     </span>
                   </div>
                 </div>
 
-                {/* Content section */}
                 <div className="lg:col-span-3 p-8 lg:p-10">
-                  <h4 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">{event.title}</h4>
-                  <p className="text-muted-foreground mb-8 text-pretty leading-relaxed">{event.description}</p>
-                  
-                  <div className="grid grid-cols-2 gap-6 mb-8">
-                    <div className="flex items-center gap-4">
-                      <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-primary/10">
-                        <Calendar className="h-5 w-5 text-primary" />
+                  <h4 className="font-serif text-2xl sm:text-3xl font-bold text-foreground mb-3">
+                    {event.title}
+                  </h4>
+                  <p className="text-muted-foreground mb-8 leading-relaxed text-pretty">
+                    {event.description}
+                  </p>
+
+                  <div className="grid grid-cols-2 gap-5 mb-8">
+                    {[
+                      { icon: Calendar, label: "日程", value: event.date },
+                      { icon: Clock, label: "時間", value: event.time },
+                      { icon: MapPin, label: "会場", value: event.location },
+                      { icon: Users, label: "定員", value: `${event.capacity}名` },
+                    ].map((row) => (
+                      <div key={row.label} className="flex items-start gap-3">
+                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-secondary">
+                          <row.icon className="h-4 w-4 text-primary" />
+                        </div>
+                        <div>
+                          <p className="text-xs text-muted-foreground">{row.label}</p>
+                          <p className="text-sm font-semibold text-foreground">{row.value}</p>
+                        </div>
                       </div>
-                      <div>
-                        <p className="text-xs text-muted-foreground font-medium">日程</p>
-                        <p className="text-sm font-bold text-foreground">{event.date}</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-4">
-                      <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-primary/10">
-                        <Clock className="h-5 w-5 text-primary" />
-                      </div>
-                      <div>
-                        <p className="text-xs text-muted-foreground font-medium">時間</p>
-                        <p className="text-sm font-bold text-foreground">{event.time}</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-4">
-                      <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-primary/10">
-                        <MapPin className="h-5 w-5 text-primary" />
-                      </div>
-                      <div>
-                        <p className="text-xs text-muted-foreground font-medium">会場</p>
-                        <p className="text-sm font-bold text-foreground">{event.location}</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-4">
-                      <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-primary/10">
-                        <Users className="h-5 w-5 text-primary" />
-                      </div>
-                      <div>
-                        <p className="text-xs text-muted-foreground font-medium">定員</p>
-                        <p className="text-sm font-bold text-foreground">{event.capacity}名</p>
-                      </div>
-                    </div>
+                    ))}
                   </div>
 
-                  <div className="flex flex-wrap gap-2 mb-8">
+                  <div className="mb-8 flex flex-wrap gap-2">
                     {event.targetAudience.map((tag) => (
-                      <span key={tag} className="px-4 py-2 bg-muted text-muted-foreground text-sm font-medium rounded-full">
+                      <span
+                        key={tag}
+                        className="rounded-full border border-border bg-secondary/60 px-3.5 py-1.5 text-xs font-medium text-muted-foreground"
+                      >
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  <Button size="lg" asChild className="group bg-accent hover:bg-accent/90 text-accent-foreground shadow-lg shadow-accent/25 hover:shadow-xl transition-all">
-                    <Link href={event.applicationUrl} target="_blank" rel="noopener noreferrer">
-                      参加申し込み
-                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                  </Button>
+                  <Link
+                    href={event.applicationUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-sm font-medium text-background transition-colors hover:bg-primary"
+                  >
+                    参加申し込み
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Past Events */}
+        {/* Past */}
         <div>
-          <div className="flex items-center gap-3 mb-8">
-            <Camera className="w-5 h-5 text-primary" />
-            <h3 className="text-xl font-bold text-foreground">過去の開催実績</h3>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <h3 className="font-serif text-xl font-bold text-foreground mb-8">これまでの開催</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {pastEvents.map((event, index) => (
               <motion.div
                 key={event.id}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-card rounded-2xl overflow-hidden border border-border shadow-lg card-interactive group"
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                className="group overflow-hidden rounded-2xl border border-border bg-card card-interactive"
               >
                 {event.image && (
-                  <div className="relative h-48 overflow-hidden">
+                  <div className="relative h-44 overflow-hidden">
                     <Image
                       src={event.image}
                       alt={event.title}
                       fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent" />
-                    <div className="absolute bottom-4 left-4">
-                      <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-foreground text-xs font-bold rounded-full">
-                        {event.title.split(" ")[0]}
-                      </span>
-                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 to-transparent" />
+                    <span className="absolute bottom-3 left-3 rounded-full bg-background/90 px-3 py-1 text-xs font-bold text-foreground backdrop-blur">
+                      {event.title.split(" ")[0]}
+                    </span>
                   </div>
                 )}
-                <div className="p-6">
-                  <h4 className="font-bold text-foreground mb-4 text-lg">{event.title}</h4>
-                  <div className="space-y-2 text-sm text-muted-foreground mb-4">
-                    <div className="flex items-center gap-2">
-                      <Calendar className="h-4 w-4 text-primary" />
-                      <span>{event.date}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <MapPin className="h-4 w-4 text-primary" />
-                      <span>{event.location}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Users className="h-4 w-4 text-primary" />
-                      <span>参加学生 {event.participants}名</span>
-                    </div>
+                <div className="p-5">
+                  <h4 className="font-serif text-base font-bold text-foreground mb-3 leading-snug">
+                    {event.title}
+                  </h4>
+                  <div className="mb-4 space-y-1.5 text-xs text-muted-foreground">
+                    <span className="flex items-center gap-2">
+                      <Calendar className="h-3.5 w-3.5 text-primary" />
+                      {event.date}
+                    </span>
+                    <span className="flex items-center gap-2">
+                      <MapPin className="h-3.5 w-3.5 text-primary" />
+                      {event.location}
+                    </span>
+                    <span className="flex items-center gap-2">
+                      <Users className="h-3.5 w-3.5 text-primary" />
+                      参加学生 {event.participants}名
+                    </span>
                   </div>
                   <div className="flex flex-wrap gap-1.5">
                     {event.companies.map((company) => (
-                      <span key={company} className="px-2.5 py-1 bg-muted text-muted-foreground text-xs font-medium rounded-md">
+                      <span
+                        key={company}
+                        className="rounded-md bg-secondary px-2.5 py-1 text-[0.7rem] font-medium text-muted-foreground"
+                      >
                         {company}
                       </span>
                     ))}

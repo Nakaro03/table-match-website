@@ -1,20 +1,20 @@
+import { cn } from "@/lib/utils"
+
 export function Logo({ className = "" }: { className?: string }) {
   return (
-    <svg
-      viewBox="0 0 200 50"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
+    <span
+      className={cn(
+        "inline-flex items-center gap-2 font-serif font-bold tracking-tight leading-none",
+        className,
+      )}
     >
-      {/* Table icon */}
-      <rect x="5" y="20" width="30" height="3" rx="1" fill="currentColor" />
-      <rect x="8" y="23" width="3" height="15" fill="currentColor" />
-      <rect x="29" y="23" width="3" height="15" fill="currentColor" />
-      
-      {/* Text: Table Match */}
-      <text x="45" y="32" fill="currentColor" fontFamily="inherit" fontSize="18" fontWeight="700" letterSpacing="-0.5">
-        Table Match
-      </text>
-    </svg>
+      <span
+        aria-hidden
+        className="inline-block h-2.5 w-2.5 rounded-full bg-primary translate-y-[-1px]"
+      />
+      <span className="text-foreground">
+        Table<span className="text-primary">.</span>Match
+      </span>
+    </span>
   )
 }
