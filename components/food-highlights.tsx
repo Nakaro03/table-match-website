@@ -2,75 +2,6 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
-import { useState } from "react"
-
-// 学生向けの "食事の楽しみ" 訴求。
-// 具体的な料理には言及せず、ジャンルだけを提示。
-// メニュー写真を public/images/food/ にアップロードすると自動で差し替わります。
-const foodItems = [
-  {
-    no: "01",
-    name: "寿司",
-    desc: "回によって、いろんなジャンルを。",
-    image: "/images/food/sushi.jpg",
-    fallback: "🍣",
-    gradient: "from-sky-100 to-blue-100",
-  },
-  {
-    no: "02",
-    name: "ピザ",
-    desc: "シェアして、気軽に盛り上がる。",
-    image: "/images/food/pizza.jpg",
-    fallback: "🍕",
-    gradient: "from-blue-100 to-indigo-100",
-  },
-  {
-    no: "03",
-    name: "スイーツ",
-    desc: "デザートまで、みんなで楽しく。",
-    image: "/images/food/sweets.jpg",
-    fallback: "🍰",
-    gradient: "from-indigo-100 to-sky-100",
-  },
-]
-
-function FoodCard({ item, index }: { item: (typeof foodItems)[number]; index: number }) {
-  const [failed, setFailed] = useState(false)
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="group relative overflow-hidden rounded-[1.5rem] border border-border bg-card card-interactive"
-    >
-      <div className="relative aspect-[4/5] overflow-hidden">
-        {item.image && !failed ? (
-          <Image
-            src={item.image}
-            alt={item.name}
-            fill
-            className="object-cover transition-transform duration-700 group-hover:scale-105"
-            onError={() => setFailed(true)}
-          />
-        ) : (
-          <div className={`flex h-full w-full items-center justify-center bg-gradient-to-br ${item.gradient}`}>
-            <span className="text-7xl transition-transform duration-500 group-hover:scale-110">
-              {item.fallback}
-            </span>
-          </div>
-        )}
-        <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/10 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 p-6">
-          <span className="font-mono text-xs text-background/70">{item.no}</span>
-          <h3 className="mt-1 font-serif text-2xl font-bold text-background">{item.name}</h3>
-          <p className="mt-1 text-sm text-background/80 leading-relaxed">{item.desc}</p>
-        </div>
-      </div>
-    </motion.div>
-  )
-}
 
 export function FoodHighlights() {
   return (
@@ -130,11 +61,6 @@ export function FoodHighlights() {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6">
-          {foodItems.map((item, i) => (
-            <FoodCard key={item.name} item={item} index={i} />
-          ))}
-        </div>
       </div>
     </section>
   )

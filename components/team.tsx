@@ -321,7 +321,7 @@ export function Team() {
               興味がある方はお気軽にお問い合わせください。
             </p>
             <p className="text-xs text-muted-foreground">
-              ※ 写真や詳細プロフィールはGitHubリポジトリから更新できます
+              ※学生限定です。社会人の方はお問い合わせいただいてもお断りする場合があります。
             </p>
           </div>
         </motion.div>
