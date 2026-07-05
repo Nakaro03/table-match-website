@@ -41,7 +41,7 @@ const zenKaku = Zen_Kaku_Gothic_New({
 
 const SITE_URL = 'https://tablematch-student.com'
 const SITE_NAME = 'Table Match'
-const SITE_TITLE = 'Table Match | 学生と企業をつなぐ採用イベント'
+const SITE_TITLE = 'Table Match | 学生と企業を食事でつなぐ交流コミュニティ'
 const SITE_DESCRIPTION =
   '学生団体Table Matchは、長野・福岡で学生と経営者が本音で語り合えるカジュアルな採用マッチングイベントを運営しています。'
 
