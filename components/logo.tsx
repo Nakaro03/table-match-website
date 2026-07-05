@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { cn } from "@/lib/utils"
 
 export function Logo({ className = "", light = false }: { className?: string; light?: boolean }) {
@@ -8,9 +9,13 @@ export function Logo({ className = "", light = false }: { className?: string; li
         className,
       )}
     >
-      <span
-        aria-hidden
-        className="inline-block h-2.5 w-2.5 rounded-full bg-primary translate-y-[-1px]"
+      <Image
+        src="/icon.svg"
+        alt="Table Match"
+        width={28}
+        height={28}
+        className="h-7 w-7"
+        priority
       />
       <span className={light ? "text-background" : "text-foreground"}>
         Table<span className="text-primary">.</span>Match

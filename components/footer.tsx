@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { motion } from "framer-motion"
 import { Instagram, Mail, MapPin, ArrowUpRight } from "lucide-react"
 
@@ -25,8 +26,9 @@ export function Footer() {
             transition={{ duration: 0.5 }}
             className="md:col-span-5"
           >
-            <p className="font-serif text-2xl font-bold">
-              Table<span className="text-primary">.</span>Match
+            <p className="flex items-center gap-2.5 font-serif text-2xl font-bold">
+              <Image src="/icon.svg" alt="" width={32} height={32} className="h-8 w-8" />
+              <span>Table<span className="text-primary">.</span>Match</span>
             </p>
             <p className="mt-4 max-w-sm text-sm text-background/70 leading-relaxed">
               学生と経営者が本音で語り合える、カジュアルな採用マッチングイベントを運営する学生団体です。
