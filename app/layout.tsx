@@ -101,8 +101,9 @@ export const metadata: Metadata = {
     apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
   },
   manifest: '/manifest.webmanifest',
-  // Google Search Console のHTMLタグ認証を使う場合は下記のコメントを外し、トークンを貼り付けてください
-  // verification: { google: 'ここにSearch Consoleの認証トークン' },
+  verification: {
+    google: 'nS6vGL4uT1-fjcdVKFeoMMxKiPRyVw_V00__VDBSTNo',
+  },
 }
 
 // 構造化データ（JSON-LD）: Organization
