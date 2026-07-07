@@ -4,26 +4,27 @@ import { motion, useInView } from "framer-motion"
 import Image from "next/image"
 import { useRef } from "react"
 
+// MECEで整理：01=規模 / 02=場 / 03=形式 / 04=相手（各軸で語彙が重複しないよう分離）
 const features = [
   {
     no: "01",
     title: "少人数制",
-    description: "社長1人に対して学生5〜6人。全員が発言でき、深い対話が生まれます。",
+    description: "社長1人に学生5〜6人。全員に発言の機会がまわり、一人ひとりの疑問まで拾えます。",
   },
   {
     no: "02",
-    title: "食事を囲んで",
-    description: "美味しい食事を囲みながら、リラックスした雰囲気で本音の会話ができます。",
+    title: "和やかな食卓",
+    description: "食事をともにすることで自然と距離が縮まり、構えのない雰囲気が生まれます。",
   },
   {
     no: "03",
-    title: "マッチング重視",
-    description: "一方的な会社説明ではなく、双方向の対話でミスマッチを防ぎます。",
+    title: "双方向マッチング",
+    description: "会社説明を聞くだけでなく、質問し合う往復のやりとりで、入社後のミスマッチを防ぎます。",
   },
   {
     no: "04",
     title: "地元企業と接続",
-    description: "地方で活躍する優良企業の経営者と、直接つながる貴重な機会を。",
+    description: "地域で活躍する優良企業のトップと、担当者を介さずつながれます。",
   },
 ]
 
@@ -80,8 +81,8 @@ export function Concept() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-muted-foreground leading-relaxed text-pretty"
           >
-            Table Match は、地域の優良企業と学生が食卓を囲んで語り合う採用マッチングイベントを運営する学生団体です。
-            従来の採用活動は浅い関係で終わりがち。私たちはカジュアルな場での本音の対話で、その課題を解決します。
+            Table Match は、地域の優良企業と学生が同じ食卓を囲んで語り合う採用イベントを運営する学生団体です。
+            求人情報や説明会だけでは見えない“人となり”に、直接ふれられる場をつくっています。
           </motion.p>
         </div>
 
@@ -107,7 +108,7 @@ export function Concept() {
                 「やりがいは、自分で創る。」
               </p>
               <p className="mt-1 text-xs text-muted-foreground">
-                経営者のリアルな言葉に、直接ふれられる場。
+                — 経営者による特別講演より
               </p>
             </div>
           </motion.div>

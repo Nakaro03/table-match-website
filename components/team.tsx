@@ -96,6 +96,20 @@ export const teamMembers = [
     description: "Table Matchの創設者。学生と企業の新しい出会いの形を追求。",
     image: "/images/representative.jpg",
     members: null,
+    // ↓ アイコンをクリックすると開く詳細プロフィール（文章は自由に編集してください）
+    bio: {
+      tagline: "学生と企業の“本音の出会い”を、あたたかい食卓から。",
+      paragraphs: [
+        "はじめまして、Table Match 代表の中村楼偉です。筑波大学大学院で情報学を専攻しています。",
+        "大手ナビサイトでは伝わりにくい、経営者の人柄や会社の空気感を、少人数の食卓を通じて届けたい——そんな想いで Table Match を立ち上げました。",
+        "長野・福岡を中心に、学生と経営者が本音で語り合える場を運営しています。ここでの一度の出会いが、誰かの進路を変えるきっかけになればと願っています。",
+      ],
+      highlights: [
+        "Table Match 創設者・代表",
+        "長野・福岡でイベントを主催",
+        "AI・DX・IT 領域にも関心",
+      ],
+    },
   },
   {
     name: "長野支部",
@@ -104,6 +118,7 @@ export const teamMembers = [
     description: "学生集客とイベント企画で活躍するメンバーたち。クリックで紹介を見る。",
     image: null,
     members: naganoMembers,
+    bio: null,
   },
   {
     name: "福岡支部",
@@ -112,6 +127,7 @@ export const teamMembers = [
     description: "SNS運営、営業、司会進行など各分野で活躍するメンバーたち。クリックで紹介を見る。",
     image: null,
     members: fukuokaMembers,
+    bio: null,
   },
 ]
 
@@ -167,8 +183,11 @@ function MemberStack({ members }: { members: typeof fukuokaMembers }) {
   )
 }
 
+type Representative = (typeof teamMembers)[number]
+
 export function Team() {
   const [openBranch, setOpenBranch] = useState<{ name: string; members: typeof fukuokaMembers } | null>(null)
+  const [openProfile, setOpenProfile] = useState<Representative | null>(null)
 
   return (
     <section id="team" className="py-24 relative overflow-hidden">
@@ -198,7 +217,11 @@ export function Team() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
           {teamMembers.map((member, index) => {
-            const clickable = !!member.members
+            const clickable = !!(member.members || member.bio)
+            const openDetail = () => {
+              if (member.members) setOpenBranch({ name: member.name, members: member.members })
+              else if (member.bio) setOpenProfile(member)
+            }
             return (
               <motion.div
                 key={member.name}
@@ -206,13 +229,13 @@ export function Team() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                onClick={() => clickable && setOpenBranch({ name: member.name, members: member.members! })}
+                onClick={() => clickable && openDetail()}
                 role={clickable ? "button" : undefined}
                 tabIndex={clickable ? 0 : undefined}
                 onKeyDown={(e) => {
                   if (clickable && (e.key === "Enter" || e.key === " ")) {
                     e.preventDefault()
-                    setOpenBranch({ name: member.name, members: member.members! })
+                    openDetail()
                   }
                 }}
                 className={`relative bg-card rounded-3xl p-8 text-center border border-border shadow-lg card-interactive group ${
@@ -224,8 +247,8 @@ export function Team() {
                     whileHover={{ scale: 1.05 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    {clickable ? (
-                      <MemberStack members={member.members!} />
+                    {member.members ? (
+                      <MemberStack members={member.members} />
                     ) : (
                       <Avatar name={member.name} image={member.image} />
                     )}
@@ -239,7 +262,7 @@ export function Team() {
                 <p className="text-sm text-muted-foreground leading-relaxed">{member.description}</p>
                 {clickable && (
                   <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary group-hover:gap-2 transition-all">
-                    メンバーを見る
+                    {member.members ? "メンバーを見る" : "プロフィールを見る"}
                     <ChevronRight className="w-4 h-4" />
                   </span>
                 )}
@@ -302,6 +325,74 @@ export function Team() {
                     </motion.div>
                   ))}
                 </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Representative profile modal */}
+        <AnimatePresence>
+          {openProfile?.bio && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setOpenProfile(null)}
+              className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/60 backdrop-blur-sm p-4"
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                transition={{ type: "spring", stiffness: 300, damping: 28 }}
+                onClick={(e) => e.stopPropagation()}
+                className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto bg-card rounded-3xl p-6 sm:p-10 shadow-2xl border border-border"
+              >
+                <button
+                  onClick={() => setOpenProfile(null)}
+                  aria-label="閉じる"
+                  className="absolute top-4 right-4 flex items-center justify-center w-10 h-10 rounded-full bg-secondary text-muted-foreground hover:bg-muted transition"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+
+                <div className="text-center mb-8">
+                  <div className="flex justify-center mb-5">
+                    <Avatar name={openProfile.name} image={openProfile.image} />
+                  </div>
+                  <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary mb-3">
+                    <Users className="w-4 h-4" />
+                    {openProfile.role}
+                  </span>
+                  <h3 className="text-2xl font-bold text-foreground">{openProfile.name}</h3>
+                  {openProfile.university && (
+                    <p className="text-sm text-muted-foreground mt-1">{openProfile.university}</p>
+                  )}
+                  {openProfile.bio.tagline && (
+                    <p className="mt-4 text-base font-semibold text-foreground/90">
+                      {openProfile.bio.tagline}
+                    </p>
+                  )}
+                </div>
+
+                <div className="space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
+                  {openProfile.bio.paragraphs.map((p, i) => (
+                    <p key={i}>{p}</p>
+                  ))}
+                </div>
+
+                {openProfile.bio.highlights.length > 0 && (
+                  <div className="mt-8 flex flex-wrap gap-2">
+                    {openProfile.bio.highlights.map((h) => (
+                      <span
+                        key={h}
+                        className="px-4 py-2 bg-muted text-muted-foreground text-sm font-medium rounded-full"
+                      >
+                        {h}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </motion.div>
             </motion.div>
           )}

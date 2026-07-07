@@ -133,9 +133,9 @@ export function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
-            className="mt-8 inline-flex flex-wrap items-center gap-x-5 gap-y-2 rounded-2xl border border-background/20 bg-background/10 px-5 py-3 text-sm text-background/90 backdrop-blur"
+            className="mt-8 inline-flex flex-wrap items-center gap-x-5 gap-y-2 rounded-2xl border border-primary/50 bg-primary/25 px-5 py-3 text-sm text-background backdrop-blur"
           >
-            <span className="label-eyebrow text-[0.6rem] text-background/80">Next Event</span>
+            <span className="label-eyebrow rounded-full bg-primary px-2 py-0.5 text-[0.6rem] text-primary-foreground">Next Event</span>
             <span className="font-serif font-bold text-background">第5回 Table Match 長野</span>
             <span className="flex items-center gap-2">
               <Calendar className="h-3.5 w-3.5" />
