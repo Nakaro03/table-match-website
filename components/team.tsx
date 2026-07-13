@@ -44,6 +44,18 @@ export const naganoMembers = [
     university: "諏訪東京理科大学 工学部 情報応用工学科 3年", // ← 大学名を記入（例：九州大学 3年）
     image: "/images/team/nagano-6.jpg",
   },
+  {
+    name: "亀田 楽人",
+    role: "", // ← 役割が決まったら記入（例：リーダー / SNS担当 など）
+    university: "諏訪東京理科大学 工学部 機械電気工学科 3年",
+    image: "/images/team/nagano-7.jpg",
+  },
+  {
+    name: "杉本 健太",
+    role: "", // ← 役割が決まったら記入（例：リーダー / SNS担当 など）
+    university: "公立諏訪東京理科大学 工学部 情報応用工学科 2年",
+    image: "/images/team/nagano-8.jpg",
+  },
 ]
 
 // 福岡支部メンバー（写真・役割・大学はここを編集）
