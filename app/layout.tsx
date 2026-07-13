@@ -69,9 +69,9 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     images: [
       {
-        url: '/images/event-5.jpg',
-        width: 1200,
-        height: 630,
+        url: '/images/event-5.jpeg',
+        width: 610,
+        height: 501,
         alt: 'Table Match',
       },
     ],
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    images: ['/images/event-5.jpg'],
+    images: ['/images/event-5.jpeg'],
   },
   robots: {
     index: true,

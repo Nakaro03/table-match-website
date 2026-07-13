@@ -106,7 +106,7 @@ export function Events() {
             >
               <div className="grid lg:grid-cols-5">
                 <div className="relative h-64 lg:h-auto lg:col-span-2 min-h-[320px]">
-                  <Image src="/images/event-5.jpg" alt={event.title} fill className="object-cover" />
+                  <Image src="/images/event-5.jpeg" alt={event.title} fill className="object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-foreground/50 via-transparent to-transparent" />
                   <div className="absolute left-5 top-5">
                     <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-1.5 text-sm font-semibold text-primary-foreground shadow-lg">
