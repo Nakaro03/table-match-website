@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { motion } from "framer-motion"
 import { Clock, Users, Building2, Coffee, MessageCircle, Camera, PartyPopper } from "lucide-react"
 
@@ -8,43 +9,61 @@ const programItems = [
     time: "11:00",
     title: "オープニング",
     description: "目的共有・チーム紹介",
+    detail:
+      "イベントの目的を共有したり、チーム紹介をしたりします！その後プログラムが進んでいきます！",
+    image: "/images/program/opening.jpg",
     icon: Users,
   },
   {
     time: "11:15",
     title: "自己分析",
     description: "自分の強みや今やりたいことを整理しアイスブレイク",
+    detail:
+      "自分の強みや今やりたいことを整理してアイスブレイク！案外自分を振り返る機会はないと思うので就職活動に向けた第一歩！",
+    image: "/images/program/jikobun.jpg",
     icon: Clock,
   },
   {
     time: "11:45",
     title: "企業説明",
     description: "参加企業4社が会社の魅力をプレゼン",
+    detail: "参加企業が会社の魅力をプレゼン！社長・人事の熱いプレゼンを聞いてより会社への理解を深めましょう！",
+    image: "/images/program/kigyosetsu.jpg",
     icon: Building2,
   },
   {
     time: "12:25",
     title: "休憩",
     description: "お菓子でひと息",
+    detail: 
+      "お菓子で一息タイムです。休憩時間も企業の方、学生の方楽しく交流されています。ご飯のいいにおいもしてきます～",
+    image: "/images/program/kyukei.jpg",
     icon: Coffee,
   },
   {
     time: "12:40",
     title: "シャッフル座談会",
     description: "社長と本音で語る",
+    detail: 
+      "社長・人事とホンネで語る！！実際にリアルな会社の話、社会の話など距離が近いからこそたくさんのことが聞けます！",
+    image: "/images/program/zadan.jpg",
     icon: MessageCircle,
-    highlight: true,
   },
   {
     time: "13:40",
     title: "閉会式",
     description: "全体で記念撮影",
+    detail: "全体で記念撮影！あっっという間に閉会式になってしまいます。",
+    image: "/images/program/closing.jpg",
     icon: Camera,
   },
   {
     time: "14:00",
     title: "交流会",
     description: "デザート片手に自由に交流",
+    detail: 
+      "ご飯・デザート片手に自由に交流！企業からのインターン情報や採用情報を聞けるかも。",
+    image: "/images/program/koryu.jpg",
     icon: PartyPopper,
   },
 ]
@@ -74,51 +93,76 @@ export function Program() {
         </motion.div>
 
         <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-6 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-0.5 bg-border" />
-
-          <div className="space-y-6">
+          {/* 中央のタイムライン */}
+          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-border -translate-x-1/2" />
+          <div className="space-y-0">
             {programItems.map((item, index) => (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.08 }}
-                className={`relative flex items-center gap-4 ${
-                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                transition={{ duration: 0.5 }}
+                className={`relative flex items-center ${
+                  index % 2 === 0
+                    ? "md:justify-start"
+                    : "md:justify-end"
                 }`}
               >
-                {/* Timeline dot */}
-                <div className={`absolute left-6 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full z-10 ${
-                  item.highlight ? "bg-primary ring-4 ring-primary/20" : "bg-primary"
-                }`} />
-
-                {/* Content card */}
-                <div className={`ml-12 md:ml-0 md:w-[calc(50%-2rem)] ${
-                  index % 2 === 0 ? "md:pr-8" : "md:pl-8"
-                }`}>
-                  <div className={`bg-card rounded-lg p-5 border ${
-                    item.highlight ? "border-primary/30 shadow-sm" : "border-border"
-                  }`}>
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className={`p-2 rounded-md ${
-                        item.highlight ? "bg-primary text-primary-foreground" : "bg-secondary"
-                      }`}>
-                        <item.icon className="h-4 w-4" />
-                      </div>
-                      <span className={`text-sm font-semibold ${
-                        item.highlight ? "text-primary" : "text-muted-foreground"
-                      }`}>
-                        {item.time}
-                      </span>
+                {/* タイムラインの丸 */}
+                <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 z-20 flex-col items-center">
+                  <div className="w-5 h-5 rounded-full bg-primary border-4 border-secondary" />
+                  <span className="mt-2 text-sm font-semibold text-primary whitespace-nowrap">
+                    {item.time}
+                  </span>
+                </div>
+                {/* カード */}
+                <div
+                  className={`group w-full md:w-[42%] ${
+                    index % 2 === 0
+                      ? "md:mr-auto"
+                      : "md:ml-auto"
+                  }`}
+                >
+                  <div className="overflow-hidden rounded-2xl border bg-card shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                    {/* タイトル */}
+                    <div className="py-4 text-center border-b">
+                      <h3 className="text-2xl font-bold">
+                        {item.title}
+                      </h3>
                     </div>
-                    <h3 className={`font-semibold mb-1 ${
-                      item.highlight ? "text-primary" : "text-foreground"
-                    }`}>
-                      {item.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground">{item.description}</p>
+                    {/* 画像 */}
+                    <div className="relative h-72 overflow-hidden">
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        fill
+                        className="
+                          object-cover
+                          brightness-90
+                          transition-all
+                          duration-500
+                          group-hover:brightness-75
+                          group-hover:scale-105
+                        "
+                      />
+                    </div>
+                    {/* 詳細 */}
+                    <div
+                      className="
+                        max-h-0
+                        overflow-hidden
+                        transition-all
+                        duration-500
+                        group-hover:max-h-[500px]
+                      "
+                    >
+                      <div className="border-t p-5">
+                        <p className="text-sm leading-7 whitespace-pre-line text-muted-foreground">
+                          {item.detail}
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </motion.div>
