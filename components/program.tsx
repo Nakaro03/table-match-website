@@ -37,7 +37,7 @@ const programItems = [
     description: "お菓子でひと息",
     detail: 
       "お菓子で一息タイムです。休憩時間も企業の方、学生の方楽しく交流されています。ご飯のいいにおいもしてきます～",
-    image: "/images/program/kyukei.jpg",
+    image: "/images/program/kyukei_after.jpg",
     icon: Coffee,
   },
   {
@@ -85,7 +85,7 @@ export function Program() {
             <span className="h-px w-10 bg-primary" />
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-3">
-            当日のながれ
+            当日のながれ(例)
           </h2>
           <p className="text-muted-foreground">
             メインは「社長 &times; 学生」のシャッフル座談会。
