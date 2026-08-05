@@ -132,7 +132,7 @@ function HeroWow() {
           {/* animated counters */}
           <div className="mt-14 flex gap-10">
             <Stat value={100} suffix="%" label="企業満足度" />
-            <Stat value={4} suffix="回" label="開催実績" />
+            <Stat value={5} suffix="回" label="開催実績" />
             <Stat value={2} suffix="名" label="採用実績" />
           </div>
         </div>
@@ -297,12 +297,12 @@ function TiltCard() {
           ry.set(0)
         }}
         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-        className="relative rounded-3xl border border-white/10 bg-white/[0.06] p-2 backdrop-blur-xl"
+        className="relative rounded-2xl border border-white/10 bg-white/[0.06] p-2 backdrop-blur-xl"
       >
         {/* glare */}
         <motion.div
           style={{ background: glareBg }}
-          className="pointer-events-none absolute inset-0 z-20 rounded-3xl"
+          className="pointer-events-none absolute inset-0 z-20 rounded-2xl"
         />
         <div className="relative h-52 overflow-hidden rounded-2xl">
           <Image src="/images/event-5.jpeg" alt="" fill className="object-cover" />
@@ -316,15 +316,15 @@ function TiltCard() {
             className="mt-1 text-xl font-bold"
             style={{ fontFamily: "var(--font-noto-sans-jp), sans-serif" }}
           >
-            第4回 Table Match 福岡
+            第6回 Table Match 福岡
           </h3>
           <div
             className="mt-4 space-y-3 text-sm text-neutral-300"
             style={{ fontFamily: "var(--font-noto-sans-jp), sans-serif" }}
           >
-            <Row icon={<Calendar className="h-4 w-4 text-sky-400" />} label="2026年6月21日（日）" />
-            <Row icon={<Clock className="h-4 w-4 text-sky-400" />} label="11:00〜15:00" />
-            <Row icon={<MapPin className="h-4 w-4 text-sky-400" />} label="四季の色（福岡市）" />
+            <Row icon={<Calendar className="h-4 w-4 text-sky-400" />} label="2026年10月中旬予定" />
+            <Row icon={<Clock className="h-4 w-4 text-sky-400" />} label="詳細は後日公開" />
+            <Row icon={<MapPin className="h-4 w-4 text-sky-400" />} label="福岡市内（予定）" />
           </div>
           <span className="mt-5 flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-500 py-3 font-semibold text-white">
             参加申し込み <ArrowRight className="h-4 w-4" />

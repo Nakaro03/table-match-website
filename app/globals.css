@@ -38,8 +38,8 @@
 
 @theme inline {
   --font-sans: var(--font-noto-sans-jp), 'Hiragino Sans', system-ui, sans-serif;
-  --font-serif: var(--font-zen), 'Hiragino Kaku Gothic ProN', var(--font-noto-sans-jp), system-ui, sans-serif;
-  --font-display: var(--font-space-grotesk), var(--font-zen), var(--font-noto-sans-jp), system-ui, sans-serif;
+  --font-serif: var(--font-noto-sans-jp), 'Hiragino Sans', system-ui, sans-serif;
+  --font-display: var(--font-noto-sans-jp), 'Hiragino Sans', system-ui, sans-serif;
   --font-mono: var(--font-space-grotesk), ui-monospace, monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -85,7 +85,7 @@
   ::selection {
     @apply bg-primary/20 text-foreground;
   }
-  /* Editorial display headings use the serif face */
+  /* 見出しを含め、サイト全体で Noto Sans JP を使用する */
   .font-serif {
     font-feature-settings: "palt" 1;
   }
@@ -147,20 +147,19 @@ html {
 
 /* ---------- Cards ---------- */
 
+/* エディトリアル基調：浮き上がりや大きな影は使わず、罫線の濃度で反応させる */
 .card-hover {
-  @apply transition-all duration-300 ease-out;
+  @apply transition-colors duration-200 ease-out;
 }
 .card-hover:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 18px 40px -18px oklch(0.24 0.02 255 / 0.18);
+  border-color: color-mix(in oklch, var(--foreground) 35%, transparent);
 }
 
 .card-interactive {
-  @apply transition-all duration-300 ease-out;
+  @apply transition-colors duration-200 ease-out;
 }
 .card-interactive:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 24px 50px -22px oklch(0.24 0.02 255 / 0.22);
+  border-color: color-mix(in oklch, var(--foreground) 45%, transparent);
 }
 
 /* ---------- Glass (warm frosted) ---------- */

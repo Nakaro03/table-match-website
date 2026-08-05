@@ -1,33 +1,100 @@
-# v0-table-match-website
+# Table Match ホームページ
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [v0](https://v0.app).
+学生と経営者が食卓を囲んで本音で語り合う、少人数制の採用・交流イベント「Table Match」の公式サイトです。
 
-## Built with v0
+## 今回の更新要件
 
-This repository is linked to a [v0](https://v0.app) project. You can continue developing by visiting the link below -- start new chats to make changes, and v0 will push commits directly to this repo. Every merge to `main` will automatically deploy.
+### 開催情報を正しく更新する
 
-[Continue working on v0 →](https://v0.app/chat/projects/prj_8RpEGoG6XHI5FOjil8s2m4RWW89z)
+- 開催実績を **4回から5回** に更新する。
+- 完了した「第5回 Table Match 長野」を「次回開催」から「これまでの開催」へ移す。
+  - 参加企業：株式会社K2Tプランニング
+  - 参加学生：14名
+  - 写真：`public/images/event-5.jpeg`（今回追加された第5回の集合写真）
+- 「次回開催」には **第6回 Table Match 福岡** を掲載する。
+  - 開催予定：10月中旬
+  - 日時・会場・参加企業・定員・申込URLなど、未確定の項目は確定後に追記する。
 
-## Getting Started
+## コンテンツ設計の方針
 
-First, run the development server:
+ホームページでは、訪問者が「自分に関係のあるイベントか」を短時間で判断し、迷わず次の行動に進めることを最優先にします。
+
+### 想定する閲覧の流れ
+
+1. ファーストビューで、Table Matchが「誰のための、どんな場か」を理解する。
+2. 次回開催（第6回・福岡）の日時・場所・対象者を確認する。
+3. 学生は参加申込へ、企業は出展・問い合わせへ進む。
+4. 申込前に、過去5回の開催実績・写真・参加者数から雰囲気と信頼性を確かめる。
+5. プログラム、参加者の声、運営者の想いで不安を解消する。
+
+### セクションの推奨順序
+
+1. ヒーロー：価値提案と、学生・企業それぞれの導線
+2. 次回開催：第6回 Table Match 福岡の要点と主CTA
+3. Table Matchとは：少人数で話せる理由・参加価値
+4. 当日の流れ：参加後を具体的にイメージできるプログラム
+5. これまでの開催：第1回〜第5回の実績と写真
+6. 成果・参加者の声：参加の安心感と信頼性を補強
+7. 企業様向け案内：出展メリットと問い合わせ導線
+8. 最終CTA・お問い合わせ：学生申込／企業問い合わせを再提示
+
+## 重複をなくす編集ルール
+
+同じ内容を複数のセクションで繰り返すと、読み手が「どこを見ればよいか」迷い、主な行動（申込・問い合わせ）が弱くなります。以下のように情報の役割を分けます。
+
+| 情報 | 掲載する場所 | 他セクションでの扱い |
+| --- | --- | --- |
+| 次回イベントの詳細 | 「次回開催」 | ヒーローではイベント名とCTAだけを案内する |
+| Table Matchの特徴 | 「Table Matchとは」 | ヒーローでは一文の価値提案に要約する |
+| 開催回数・過去の写真・参加者数 | 「これまでの開催」 | ヒーローでは「開催実績5回」の数値のみを表示する |
+| 学生・企業のメリット | 対象別の案内セクション | CTA周辺では対象別リンクだけを表示する |
+| 申込・問い合わせ | 次回開催と最終CTA | 各所に同じ説明文を置かず、同じ導線へ集約する |
+
+## 実装時の更新箇所
+
+- `components/hero.tsx`
+  - 「開催実績」を `5回` に更新する。
+  - 次回イベントの表示を「第6回 Table Match 福岡」に更新する。
+- `components/events.tsx`
+  - `upcomingEvents` を第6回福岡の情報に置き換える。
+  - 第5回長野を `pastEvents` の先頭に追加する。参加学生は `14`、参加企業は「株式会社K2Tプランニング」、画像は `/images/event-5.jpeg` とする。
+- `app/preview/page.tsx`
+  - プレビュー画面にも開催実績 `5回` を反映する。第5回を次回扱いにしている箇所があれば第6回福岡へ更新する。
+
+> 第6回福岡の詳細が未確定の間は、推測した日時・会場・企業名・申込URLを掲載しません。「10月中旬開催予定」として案内し、確定情報の公開後に申込CTAを有効にします。
+
+## ビジュアル・タイポグラフィの更新要件
+
+### フォント
+
+- サイト全体の本文・UIフォントを **Noto Sans JP** に統一する。
+- Next.js の `next/font/google` を使って読み込み、レイアウトで CSS 変数または `className` を適用する。
+- 見出しに別の書体を残す場合も、日本語表示での可読性と統一感を確認する。基本方針は本文・見出しともに Noto Sans JP とする。
+
+### ヒーロー写真の自動切替
+
+- ファーストビューの `ceo-talk.jpg` の表示領域を、複数写真のスライドに変更する。
+- 写真は **3秒間隔** で自動切替し、切替時は短いフェードで自然につなぐ。
+- 使用候補は次のとおり。
+  - `/images/real/ceo-talk.jpg`
+  - `/images/real/students-table.jpg`
+  - `/images/event-5.jpeg`（第5回の集合写真）
+  - 今回添付された2枚の写真
+- 添付写真は実装前に `public/images/real/` へ保存する。推奨ファイル名は `student-writing-1.jpg`、`student-writing-2.jpg` とする。
+- アニメーションによる負荷やアクセシビリティに配慮し、`prefers-reduced-motion: reduce` の環境では自動切替を止め、最初の写真を表示する。
+
+### 撮影クレジット
+
+- 上記のスライド写真の右下（モバイルでは表示を妨げない位置）に、撮影者クレジットを掲載する。
+- 表記：`Photo: @panthenon.works`
+- リンク先：`https://www.instagram.com/panthenon.works/`
+- 外部リンクは新しいタブで開き、`rel="noopener noreferrer"` を設定する。
+- 写真の明るさに左右されず読めるよう、半透明の背景と十分なコントラストを持たせる。
+
+## 開発
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-## Learn More
-
-To learn more, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [v0 Documentation](https://v0.app/docs) - learn about v0 and how to use it.
+ブラウザで [http://localhost:3000](http://localhost:3000) を開きます。

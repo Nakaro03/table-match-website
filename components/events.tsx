@@ -8,22 +8,31 @@ import Image from "next/image"
 // Events data - editable via GitHub
 export const upcomingEvents = [
   {
-    id: 5,
-    title: "第5回 Table Match 長野",
-    date: "2026年7月17日（金）",
-    time: "17:00〜21:00",
-    location: "Kiitos（茅野市・茅野駅から徒歩2分）",
+    id: 6,
+    title: "第6回 Table Match 福岡",
+    date: "2026年10月中旬予定",
+    time: "詳細は後日公開",
+    location: "福岡市内（予定）",
     description:
-      "関東就職やAI・DX・ITに関心のある学生向けの少人数交流会。参加予定企業は株式会社K2Tプランニング様。参加費無料・服装自由です。",
-    capacity: "15〜20",
-    targetAudience: ["関東に就職したい学生", "AI・DX・ITに興味のある学生", "28・29卒の学生"],
-    status: "募集中",
-    applicationUrl:
-      "https://docs.google.com/forms/d/e/1FAIpQLScpOMAD68RcdymZX1IZT2fdMkDA0-rplU1FXJps6mlB_BtLGQ/viewform",
+      "福岡で開催予定の少人数交流会です。日時・会場・参加企業などの詳細は、決まり次第公開します。",
+    capacity: "未定",
+    targetAudience: ["福岡で就職を考えている学生", "企業の方とじっくり話したい学生"],
+    status: "開催予定",
+    image: "/images/event-4.jpg",
+    applicationUrl: "",
   },
 ]
 
 export const pastEvents = [
+  {
+    id: 5,
+    title: "第5回 Table Match 長野",
+    date: "2026年7月17日（金）",
+    location: "Kiitos（茅野市）",
+    companies: ["株式会社K2Tプランニング"],
+    participants: 14,
+    image: "/images/event-5.jpeg",
+  },
   {
     id: 4,
     title: "第4回 Table Match 福岡",
@@ -73,10 +82,6 @@ export function Events() {
           transition={{ duration: 0.6 }}
           className="mb-14"
         >
-          <div className="flex items-center gap-3 mb-6">
-            <span className="h-px w-10 bg-primary" />
-            <span className="label-eyebrow text-xs text-primary">Events</span>
-          </div>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground text-balance">
             イベント情報
           </h2>
@@ -102,11 +107,11 @@ export function Events() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="overflow-hidden rounded-[1.75rem] border border-border bg-card shadow-xl shadow-foreground/5"
+              className="overflow-hidden rounded-2xl border border-border bg-card shadow-xl shadow-foreground/5"
             >
               <div className="grid lg:grid-cols-5">
                 <div className="relative h-64 lg:h-auto lg:col-span-2 min-h-[320px]">
-                  <Image src="/images/event-5.jpeg" alt={event.title} fill className="object-cover" />
+                  <Image src={event.image} alt={event.title} fill className="object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-foreground/50 via-transparent to-transparent" />
                   <div className="absolute left-5 top-5">
                     <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-1.5 text-sm font-semibold text-primary-foreground shadow-lg">
@@ -128,7 +133,7 @@ export function Events() {
                       { icon: Calendar, label: "日程", value: event.date },
                       { icon: Clock, label: "時間", value: event.time },
                       { icon: MapPin, label: "会場", value: event.location },
-                      { icon: Users, label: "定員", value: `${event.capacity}名` },
+                      { icon: Users, label: "定員", value: event.capacity === "未定" ? event.capacity : `${event.capacity}名` },
                     ].map((row) => (
                       <div key={row.label} className="flex items-start gap-3">
                         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-secondary">
@@ -153,15 +158,19 @@ export function Events() {
                     ))}
                   </div>
 
-                  <Link
-                    href={event.applicationUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-sm font-medium text-background transition-colors hover:bg-primary"
-                  >
-                    参加申し込み
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
+                  {event.applicationUrl ? (
+                    <Link
+                      href={event.applicationUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-sm font-medium text-background transition-colors hover:bg-primary"
+                    >
+                      参加申し込み
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  ) : (
+                    <p className="text-sm font-medium text-muted-foreground">詳細・申込情報は順次公開します。</p>
+                  )}
                 </div>
               </div>
             </motion.div>

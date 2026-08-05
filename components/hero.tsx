@@ -1,10 +1,16 @@
 "use client"
 
-import { motion, useScroll, useTransform } from "framer-motion"
+import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "framer-motion"
 import { ArrowRight, ArrowUpRight, Calendar, MapPin } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
-import { useRef } from "react"
+import { useEffect, useRef, useState } from "react"
+
+const heroPhotos = [
+  { src: "/images/real/ceo-talk.jpg", alt: "カフェのテーブルで学生と語り合う経営者" },
+  { src: "/images/real/students-table.jpg", alt: "テーブルを囲んで交流する学生たち" },
+  { src: "/images/real/students-hear.jpg", alt: "第5回 Table Match 長野の参加者" },
+]
 
 const marqueeItems = [
   "株式会社くじら",
@@ -15,21 +21,34 @@ const marqueeItems = [
   "馬車馬テクノロジーズ",
   "ハートアロー",
   "山万加島屋商店",
+  "インダストリーネットワーク",
 ]
 
 const stats = [
   { value: "100%", label: "企業満足度" },
-  { value: "4回", label: "開催実績" },
+  { value: "5回", label: "開催実績" },
   { value: "50+", label: "参加学生数" },
 ]
 
 export function Hero() {
   const containerRef = useRef<HTMLElement>(null)
+  const [photoIndex, setPhotoIndex] = useState(0)
+  const shouldReduceMotion = useReducedMotion()
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
   })
   const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "12%"])
+
+  useEffect(() => {
+    if (shouldReduceMotion) return
+
+    const intervalId = window.setInterval(() => {
+      setPhotoIndex((currentIndex) => (currentIndex + 1) % heroPhotos.length)
+    }, 3000)
+
+    return () => window.clearInterval(intervalId)
+  }, [shouldReduceMotion])
 
   return (
     <section
@@ -38,17 +57,38 @@ export function Hero() {
     >
       {/* Full-bleed background photo */}
       <motion.div style={{ y: yBg }} className="absolute inset-0 z-0">
-        <Image
-          src="/images/real/ceo-talk.jpg"
-          alt="カフェのテーブルで学生と語り合う経営者"
-          fill
-          priority
-          className="object-cover object-center"
-        />
+        <AnimatePresence initial={false} mode="sync">
+          <motion.div
+            key={heroPhotos[photoIndex].src}
+            initial={shouldReduceMotion ? false : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={shouldReduceMotion ? undefined : { opacity: 0 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={heroPhotos[photoIndex].src}
+              alt={heroPhotos[photoIndex].alt}
+              fill
+              priority={photoIndex === 0}
+              sizes="100vw"
+              className="object-cover object-center"
+            />
+          </motion.div>
+        </AnimatePresence>
         {/* Legibility overlays — kept light/airy to preserve the bright look */}
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/35 to-foreground/10" />
         <div className="absolute inset-0 bg-gradient-to-r from-foreground/45 to-transparent" />
       </motion.div>
+
+      <a
+        href="https://www.instagram.com/panthenon.works/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="absolute bottom-20 right-4 z-10 rounded-full bg-foreground/55 px-3 py-1.5 text-xs font-medium text-background backdrop-blur transition-colors hover:bg-foreground/75 sm:bottom-24 sm:right-8"
+      >
+        Photo: @panthenon.works
+      </a>
 
       {/* Live badge */}
       <div className="absolute right-4 top-28 z-10 sm:right-8">
@@ -102,8 +142,8 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.45 }}
             className="mt-7 max-w-md text-base sm:text-lg text-background/90 leading-relaxed text-pretty"
           >
-            少人数のテーブルを囲んで、学生と経営者が本音で語り合う。
-            大手ナビにはない出会いを、あたたかい食卓から。
+            少人数のテーブルで、学生と経営者がじっくり語り合う。
+            あたたかい食卓から生まれる出会いを、長野と福岡で。
           </motion.p>
 
           <motion.div
@@ -133,18 +173,24 @@ export function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
-            className="mt-8 inline-flex flex-wrap items-center gap-x-5 gap-y-2 rounded-2xl border border-primary/50 bg-primary/25 px-5 py-3 text-sm text-background backdrop-blur"
+            className="mt-8"
           >
-            <span className="label-eyebrow rounded-full bg-primary px-2 py-0.5 text-[0.6rem] text-primary-foreground">Next Event</span>
-            <span className="font-serif font-bold text-background">第5回 Table Match 長野</span>
-            <span className="flex items-center gap-2">
-              <Calendar className="h-3.5 w-3.5" />
-              2026.07.17 (金)
-            </span>
-            <span className="flex items-center gap-2">
-              <MapPin className="h-3.5 w-3.5" />
-              Kiitos（茅野市）
-            </span>
+            <Link
+              href="#events"
+              className="group inline-flex flex-wrap items-center gap-x-5 gap-y-2 rounded-2xl border border-primary/50 bg-primary/25 px-5 py-3 text-sm text-background backdrop-blur transition-colors hover:bg-primary/40"
+            >
+              <span className="rounded-full bg-primary px-2.5 py-0.5 text-[0.65rem] font-medium text-primary-foreground">次回開催</span>
+              <span className="font-serif font-bold text-background">第6回 Table Match 福岡</span>
+              <span className="flex items-center gap-2">
+                <Calendar className="h-3.5 w-3.5" />
+                2026年10月中旬予定
+              </span>
+              <span className="flex items-center gap-2">
+                <MapPin className="h-3.5 w-3.5" />
+                福岡市内
+              </span>
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
           </motion.div>
 
           <motion.div
