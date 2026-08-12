@@ -89,7 +89,7 @@ function QuoteCard({
 
 export function Testimonials() {
   return (
-    <section className="py-24 sm:py-32 bg-background">
+    <section id="testimonials" className="py-24 sm:py-32 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -98,10 +98,6 @@ export function Testimonials() {
           transition={{ duration: 0.6 }}
           className="mb-14"
         >
-          <div className="flex items-center gap-3 mb-6">
-            <span className="h-px w-10 bg-primary" />
-            <span className="label-eyebrow text-xs text-primary">Voices</span>
-          </div>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground text-balance">
             参加者の声。
           </h2>

@@ -8,10 +8,11 @@ import { motion, AnimatePresence } from "framer-motion"
 
 const navItems = [
   { label: "コンセプト", href: "/#concept", num: "01" },
-  { label: "イベント", href: "/#events", num: "02" },
-  { label: "実績", href: "/#achievements", num: "03" },
-  { label: "運営チーム", href: "/#team", num: "04" },
-  { label: "企業様", href: "/for-companies", num: "05" },
+  { label: "当日のながれ", href: "/#program", num: "02" },
+  { label: "イベント", href: "/#events", num: "03" },
+  { label: "実績", href: "/#achievements", num: "04" },
+  { label: "運営チーム", href: "/#team", num: "05" },
+  { label: "企業様", href: "/for-companies", num: "06" },
 ]
 
 export function Header() {
@@ -42,7 +43,7 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-7">
+          <nav className="hidden lg:flex items-center gap-6">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -66,7 +67,7 @@ export function Header() {
             ))}
           </nav>
 
-          <div className="hidden md:flex items-center">
+          <div className="hidden lg:flex items-center">
             <Link
               href="#contact"
               className={`group inline-flex items-center gap-1.5 rounded-full px-5 py-2.5 text-sm font-medium transition-colors ${
@@ -82,7 +83,7 @@ export function Header() {
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden p-2 rounded-lg hover:bg-secondary transition-colors"
+            className="lg:hidden p-2 rounded-lg hover:bg-secondary transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="メニューを開く"
           >
@@ -99,7 +100,7 @@ export function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
-            className="md:hidden bg-background/95 backdrop-blur-md border-t border-border overflow-hidden"
+            className="lg:hidden bg-background/95 backdrop-blur-md border-t border-border overflow-hidden"
           >
             <nav className="flex flex-col p-4">
               {navItems.map((item, index) => (

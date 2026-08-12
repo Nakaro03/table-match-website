@@ -37,7 +37,7 @@ const programItems = [
     description: "お菓子でひと息",
     detail: 
       "お菓子で一息タイムです。休憩時間も企業の方、学生の方楽しく交流されています。ご飯のいいにおいもしてきます～",
-    image: "/images/program/kyukei.jpg",
+    image: "/images/real/students-table.jpg",
     icon: Coffee,
   },
   {
@@ -70,7 +70,7 @@ const programItems = [
 
 export function Program() {
   return (
-    <section className="py-20 bg-secondary">
+    <section id="program" className="py-20 bg-secondary">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -79,16 +79,14 @@ export function Program() {
           transition={{ duration: 0.5 }}
           className="text-center mb-14"
         >
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <span className="h-px w-10 bg-primary" />
-            <span className="label-eyebrow text-xs text-primary">Timetable</span>
-            <span className="h-px w-10 bg-primary" />
-          </div>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-3">
             当日のながれ
           </h2>
           <p className="text-muted-foreground">
             メインは「社長 &times; 学生」のシャッフル座談会。
+          </p>
+          <p className="mt-3 text-xs text-muted-foreground">
+            ※ 過去開催のタイムテーブル例です。開始時刻・参加企業数は開催回によって異なります。
           </p>
         </motion.div>
 

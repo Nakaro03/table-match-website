@@ -1,9 +1,12 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { motion } from "framer-motion"
-import { Send, CheckCircle, AlertCircle, Mail } from "lucide-react"
+import { Send, CheckCircle, AlertCircle, Mail, ArrowRight, ArrowUpRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { upcomingEvents } from "@/components/events"
 
 type FormData = {
   name: string
@@ -22,6 +25,7 @@ const WEB3FORMS_ACCESS_KEY =
   "be131cc6-c673-4f3c-a391-284a649941d2"
 
 export function ContactForm() {
+  const pathname = usePathname()
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -111,7 +115,6 @@ ${formData.message}
     <section id="contact" className="py-24 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
-      <div className="absolute inset-0 bg-grid opacity-30" />
       
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -121,11 +124,6 @@ ${formData.message}
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <span className="h-px w-10 bg-primary" />
-            <span className="label-eyebrow text-xs text-primary">Contact</span>
-            <span className="h-px w-10 bg-primary" />
-          </div>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             お問い合わせ
           </h2>
@@ -134,12 +132,44 @@ ${formData.message}
           </p>
         </motion.div>
 
+        {/* 最終CTA：学生は申込へ、企業は企業様ページへ */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="glass-strong rounded-3xl p-6 sm:p-10"
+          className="mb-12 flex flex-col sm:flex-row items-center justify-center gap-3"
+        >
+          {upcomingEvents[0].applicationUrl ? (
+            <Link
+              href={upcomingEvents[0].applicationUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-colors hover:bg-primary/90"
+            >
+              次回イベントに申し込む
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+          ) : (
+            <p className="text-sm font-medium text-muted-foreground">次回イベントの詳細・申込情報は順次公開します。</p>
+          )}
+          {pathname !== "/for-companies" && (
+            <Link
+              href="/for-companies"
+              className="group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-border bg-card px-7 py-3.5 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+            >
+              企業様はこちら
+              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </Link>
+          )}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="glass-strong rounded-2xl p-6 sm:p-10"
         >
           {status === "success" ? (
             <motion.div 

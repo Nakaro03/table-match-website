@@ -204,7 +204,6 @@ export function Team() {
   return (
     <section id="team" className="py-24 relative overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-grid opacity-30" />
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -214,11 +213,6 @@ export function Team() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <span className="h-px w-10 bg-primary" />
-            <span className="label-eyebrow text-xs text-primary">Team</span>
-            <span className="h-px w-10 bg-primary" />
-          </div>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             運営チーム
           </h2>
@@ -250,7 +244,7 @@ export function Team() {
                     openDetail()
                   }
                 }}
-                className={`relative bg-card rounded-3xl p-8 text-center border border-border shadow-lg card-interactive group ${
+                className={`relative bg-card rounded-2xl p-8 text-center border border-border shadow-lg card-interactive group ${
                   clickable ? "cursor-pointer ring-1 ring-transparent hover:ring-primary/40 transition" : ""
                 }`}
               >
@@ -299,7 +293,7 @@ export function Team() {
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
                 transition={{ type: "spring", stiffness: 300, damping: 28 }}
                 onClick={(e) => e.stopPropagation()}
-                className="relative w-full max-w-3xl max-h-[85vh] overflow-y-auto bg-card rounded-3xl p-6 sm:p-10 shadow-2xl border border-border"
+                className="relative w-full max-w-3xl max-h-[85vh] overflow-y-auto bg-card rounded-2xl p-6 sm:p-10 shadow-2xl border border-border"
               >
                 <button
                   onClick={() => setOpenBranch(null)}
@@ -358,7 +352,7 @@ export function Team() {
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
                 transition={{ type: "spring", stiffness: 300, damping: 28 }}
                 onClick={(e) => e.stopPropagation()}
-                className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto bg-card rounded-3xl p-6 sm:p-10 shadow-2xl border border-border"
+                className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto bg-card rounded-2xl p-6 sm:p-10 shadow-2xl border border-border"
               >
                 <button
                   onClick={() => setOpenProfile(null)}
@@ -418,7 +412,7 @@ export function Team() {
           transition={{ duration: 0.6 }}
           className="mt-16 text-center"
         >
-          <div className="bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 rounded-3xl p-8 max-w-2xl mx-auto border border-primary/20">
+          <div className="bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 rounded-2xl p-8 max-w-2xl mx-auto border border-primary/20">
             <div className="flex items-center justify-center gap-2 mb-4">
               <Heart className="w-5 h-5 text-accent" />
               <h3 className="text-xl font-bold text-foreground">
