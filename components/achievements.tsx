@@ -7,26 +7,16 @@ import Link from "next/link"
 const achievements = [
   {
     no: "01",
-    title: "インターン採用 2名",
+    title: "上場企業の選考を辞退して参画",
     description:
-      "福岡開催にて、プランタンホテルグループへの長期インターンシップ生の採用が決定。うち1名は上場企業の選考を辞退して参画。",
+      "福岡開催にて、プランタンホテルグループへの長期インターンシップ生の採用が決定。うち1名は上場企業の選考を辞退して参画しました。",
   },
   {
     no: "02",
-    title: "企業満足度 100%",
-    description: "諏訪・福岡両開催において、参加企業様からの満足度評価で100%を達成。",
+    title: "参加企業様から高い評価",
+    description:
+      "諏訪・福岡の両開催で、参加企業様の満足度評価は最高水準。「深いつながりが作れた」との声を多くいただいています。",
   },
-]
-
-const companies = [
-  "株式会社ちの技研",
-  "株式会社平出精密",
-  "有限会社山万加島屋商店",
-  "プランタンホテルグループ",
-  "株式会社ハートアロー",
-  "インダストリーネットワーク株式会社",
-  "株式会社諏訪三社電機",
-  "合同会社馬車馬テクノロジーズ",
 ]
 
 export function Achievements() {
@@ -40,10 +30,6 @@ export function Achievements() {
           transition={{ duration: 0.6 }}
           className="mb-14"
         >
-          <div className="flex items-center gap-3 mb-6">
-            <span className="h-px w-10 bg-primary" />
-            <span className="label-eyebrow text-xs text-primary">Results</span>
-          </div>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground text-balance">
             確かな成果が、生まれています。
           </h2>
@@ -103,23 +89,6 @@ export function Achievements() {
           ))}
         </div>
       </div>
-
-      {/* Company marquee */}
-      <div className="border-y border-border py-5 marquee-mask">
-        <div className="flex w-max animate-marquee">
-          {[...companies, ...companies].map((company, i) => (
-            <span
-              key={i}
-              className="mx-5 inline-flex items-center gap-5 font-serif text-lg text-foreground/70"
-            >
-              {company}
-              <span className="h-1.5 w-1.5 rounded-full bg-primary/50" />
-            </span>
-          ))}
-        </div>
-      </div>
-
-      <p className="mt-6 text-center text-sm text-muted-foreground">参加企業様</p>
     </section>
   )
 }

@@ -24,7 +24,6 @@ const comparison = [
 export function ForCompanies() {
   return (
     <section id="for-companies" className="py-24 bg-muted/30 relative overflow-hidden">
-      <div className="absolute inset-0 bg-dots opacity-30" />
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -34,11 +33,6 @@ export function ForCompanies() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <span className="h-px w-10 bg-primary" />
-            <span className="label-eyebrow text-xs text-primary">For Companies</span>
-            <span className="h-px w-10 bg-primary" />
-          </div>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             企業様向けご案内
           </h2>
@@ -54,7 +48,7 @@ export function ForCompanies() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-card rounded-3xl p-8 border border-border shadow-lg"
+            className="bg-card rounded-2xl p-8 border border-border shadow-lg"
           >
             <h3 className="text-2xl font-bold text-foreground mb-8">参加のメリット</h3>
             <div className="space-y-5">
@@ -82,7 +76,7 @@ export function ForCompanies() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-gradient-to-br from-primary to-primary/80 rounded-3xl p-8 text-primary-foreground shadow-2xl shadow-primary/20 relative overflow-hidden"
+            className="bg-gradient-to-br from-primary to-primary/80 rounded-2xl p-8 text-primary-foreground shadow-2xl shadow-primary/20 relative overflow-hidden"
           >
             {/* Decorative elements */}
             <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-3xl" />

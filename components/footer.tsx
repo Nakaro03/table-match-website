@@ -6,10 +6,12 @@ import { motion } from "framer-motion"
 import { Instagram, Mail, MapPin, ArrowUpRight } from "lucide-react"
 
 const navLinks = [
-  { label: "コンセプト", href: "#concept" },
-  { label: "イベント", href: "#events" },
-  { label: "実績", href: "#achievements" },
-  { label: "運営チーム", href: "#team" },
+  { label: "コンセプト", href: "/#concept" },
+  { label: "当日のながれ", href: "/#program" },
+  { label: "イベント", href: "/#events" },
+  { label: "実績", href: "/#achievements" },
+  { label: "参加者の声", href: "/#testimonials" },
+  { label: "運営チーム", href: "/#team" },
   { label: "企業様向け", href: "/for-companies" },
   { label: "お問い合わせ", href: "#contact" },
 ]
@@ -60,7 +62,7 @@ export function Footer() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="md:col-span-3"
           >
-            <h4 className="label-eyebrow text-[0.65rem] text-background/50 mb-4">Menu</h4>
+            <h4 className="text-xs font-medium tracking-wide text-background/50 mb-4">メニュー</h4>
             <ul className="space-y-3">
               {navLinks.map((link) => (
                 <li key={link.href}>
@@ -83,7 +85,7 @@ export function Footer() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="md:col-span-4"
           >
-            <h4 className="label-eyebrow text-[0.65rem] text-background/50 mb-4">Contact</h4>
+            <h4 className="text-xs font-medium tracking-wide text-background/50 mb-4">お問い合わせ</h4>
             <div className="space-y-4">
               <a
                 href="mailto:tablematch.info@gmail.com"

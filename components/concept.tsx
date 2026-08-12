@@ -1,8 +1,7 @@
 "use client"
 
-import { motion, useInView } from "framer-motion"
+import { motion } from "framer-motion"
 import Image from "next/image"
-import { useRef } from "react"
 
 // MECEで整理：01=規模 / 02=場 / 03=形式 / 04=相手（各軸で語彙が重複しないよう分離）
 const features = [
@@ -28,30 +27,6 @@ const features = [
   },
 ]
 
-const stats = [
-  { number: "100%", label: "企業満足度" },
-  { number: "4回", label: "開催実績" },
-  { number: "50+", label: "参加学生数" },
-  { number: "2名", label: "採用決定" },
-]
-
-function StatItem({ number, label, index }: { number: string; label: string; index: number }) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true })
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 16 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay: index * 0.08 }}
-      className="text-center sm:text-left"
-    >
-      <div className="font-serif text-4xl sm:text-5xl font-bold text-primary">{number}</div>
-      <p className="mt-1 text-sm text-muted-foreground">{label}</p>
-    </motion.div>
-  )
-}
-
 export function Concept() {
   return (
     <section id="concept" className="py-24 sm:py-32 bg-background">
@@ -64,10 +39,6 @@ export function Concept() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="flex items-center gap-3 mb-6">
-              <span className="h-px w-10 bg-primary" />
-              <span className="label-eyebrow text-xs text-primary">Concept</span>
-            </div>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-tight text-balance">
               大手ナビでは出会えない、
               <br />
@@ -95,7 +66,7 @@ export function Concept() {
             transition={{ duration: 0.7 }}
             className="relative"
           >
-            <div className="relative aspect-[4/3] overflow-hidden rounded-[1.75rem] border border-border shadow-xl">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-border shadow-xl">
               <Image
                 src="/images/real/lecture.jpg"
                 alt="経営者による特別講演の様子"
@@ -138,19 +109,6 @@ export function Concept() {
             </ul>
           </div>
         </div>
-
-        {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-border pt-12"
-        >
-          {stats.map((stat, index) => (
-            <StatItem key={stat.label} number={stat.number} label={stat.label} index={index} />
-          ))}
-        </motion.div>
       </div>
     </section>
   )
