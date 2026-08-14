@@ -5,7 +5,7 @@ export function Logo({ className = "", light = false }: { className?: string; li
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-2 font-serif font-bold tracking-tight leading-none",
+        "inline-flex items-center gap-2 font-sans font-black tracking-tight leading-none",
         className,
       )}
     >
@@ -18,7 +18,7 @@ export function Logo({ className = "", light = false }: { className?: string; li
         priority
       />
       <span className={light ? "text-background" : "text-foreground"}>
-        Table<span className="text-primary">.</span>Match
+        <span className={light ? "text-background" : "text-primary"}>Table</span>{" "}<span className={light ? "text-background" : "text-action-orange"}>Match</span>
       </span>
     </span>
   )

@@ -6,26 +6,26 @@
 :root {
   /* Table Match — Bright Fresh Palette */
   /* White · Cool Ink · Fresh Blue · Light Gray */
-  --background: oklch(0.994 0.002 250);
-  --foreground: oklch(0.24 0.02 255);
+  --background: #f7f4ec;
+  --foreground: #111111;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.24 0.02 255);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.24 0.02 255);
-  --primary: oklch(0.56 0.15 248);
-  --primary-foreground: oklch(0.99 0.005 250);
+  --primary: #0757c8;
+  --primary-foreground: #ffffff;
   --secondary: oklch(0.96 0.008 250);
   --secondary-foreground: oklch(0.30 0.02 255);
   --muted: oklch(0.965 0.006 250);
   --muted-foreground: oklch(0.52 0.02 255);
-  --accent: oklch(0.56 0.15 248);
-  --accent-foreground: oklch(0.99 0.005 250);
+  --accent: #0757c8;
+  --accent-foreground: #ffffff;
   --destructive: oklch(0.58 0.21 27);
   --destructive-foreground: oklch(0.99 0.005 250);
   --border: oklch(0.912 0.008 250);
   --input: oklch(0.93 0.006 250);
-  --ring: oklch(0.56 0.15 248);
-  --radius: 0.5rem;
+  --ring: #0757c8;
+  --radius: 0rem;
   --sidebar: oklch(0.985 0.004 250);
   --sidebar-foreground: oklch(0.24 0.02 255);
   --sidebar-primary: oklch(0.56 0.15 248);
@@ -34,6 +34,9 @@
   --sidebar-accent-foreground: oklch(0.24 0.02 255);
   --sidebar-border: oklch(0.912 0.008 250);
   --sidebar-ring: oklch(0.56 0.15 248);
+  --paper: #f7f4ec;
+  --action-orange: #ff4b0a;
+  --action-yellow: #ffd400;
 }
 
 @theme inline {
@@ -72,6 +75,9 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-paper: var(--paper);
+  --color-action-orange: var(--action-orange);
+  --color-action-yellow: var(--action-yellow);
 }
 
 @layer base {
@@ -93,6 +99,65 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+/* ---------- Bold Poster system ---------- */
+
+.poster-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--foreground) 7%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--foreground) 7%, transparent) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.poster-photo-cut {
+  clip-path: polygon(0 8%, 84% 0, 100% 18%, 95% 100%, 12% 94%);
+}
+
+.poster-underline {
+  position: relative;
+  z-index: 0;
+  display: inline-block;
+}
+
+.poster-underline::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  right: -1%;
+  bottom: 2%;
+  left: -1%;
+  height: 16%;
+  background: var(--action-yellow);
+  transform: rotate(-1deg);
+}
+
+.poster-button {
+  display: inline-flex;
+  min-height: 3.5rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  border: 2px solid var(--foreground);
+  padding: 0.85rem 1.25rem;
+  font-weight: 900;
+  line-height: 1.2;
+  transition: transform 160ms ease, background-color 160ms ease, color 160ms ease;
+}
+
+.poster-button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--foreground);
+}
+
+.poster-button-orange {
+  background: var(--action-orange);
+  color: white;
+}
+
+@media (max-width: 640px) {
+  .poster-button { min-height: 3.25rem; }
+  .poster-photo-cut { clip-path: polygon(0 4%, 91% 0, 100% 15%, 96% 100%, 5% 95%); }
 }
 
 /* ---------- Editorial helpers ---------- */

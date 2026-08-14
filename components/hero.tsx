@@ -25,9 +25,9 @@ const marqueeItems = [
 ]
 
 const stats = [
-  { value: "100%", label: "企業満足度" },
   { value: "5回", label: "開催実績" },
-  { value: "50+", label: "参加学生数" },
+  { value: "85+", label: "延べ参加学生" },
+  { value: "9社+", label: "参加企業" },
 ]
 
 export function Hero() {
@@ -153,10 +153,10 @@ export function Hero() {
             className="mt-8 flex flex-col sm:flex-row items-start gap-3"
           >
             <Link
-              href="#events"
+              href="/projects"
               className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
             >
-              次回イベントを見る
+              募集中の企画を見る
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
