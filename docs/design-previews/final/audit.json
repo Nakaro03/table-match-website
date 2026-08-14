@@ -72,6 +72,14 @@
     "brokenImages": []
   },
   {
+    "name": "photographer",
+    "route": "/photographer",
+    "viewport": "desktop",
+    "viewportWidth": 1440,
+    "documentWidth": 1440,
+    "brokenImages": []
+  },
+  {
     "name": "for-companies",
     "route": "/for-companies",
     "viewport": "desktop",
@@ -186,6 +194,14 @@
   {
     "name": "team",
     "route": "/team",
+    "viewport": "mobile",
+    "viewportWidth": 390,
+    "documentWidth": 390,
+    "brokenImages": []
+  },
+  {
+    "name": "photographer",
+    "route": "/photographer",
     "viewport": "mobile",
     "viewportWidth": 390,
     "documentWidth": 390,

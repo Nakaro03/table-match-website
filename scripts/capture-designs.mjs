@@ -14,6 +14,7 @@ const pages = [
   ["news-detail", "/news/fukuoka-6-preview"],
   ["about", "/about"],
   ["team", "/team"],
+  ["photographer", "/photographer"],
   ["for-companies", "/for-companies"],
   ["student-apply", "/apply/regional-startup-internship"],
   ["company-apply", "/apply/company/company-participation"],
