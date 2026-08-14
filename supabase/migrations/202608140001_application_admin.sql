@@ -1,15 +1,28 @@
+-- This migration is intentionally idempotent so an interrupted setup can be resumed safely.
 create extension if not exists pgcrypto;
 
-create type public.opportunity_type as enum (
-  'event',
-  'internship',
-  'company_visit',
-  'company_participation'
-);
+do $$
+begin
+  create type public.opportunity_type as enum (
+    'event',
+    'internship',
+    'company_visit',
+    'company_participation'
+  );
+exception
+  when duplicate_object then null;
+end
+$$;
 
-create type public.applicant_type as enum ('student', 'company');
+do $$
+begin
+  create type public.applicant_type as enum ('student', 'company');
+exception
+  when duplicate_object then null;
+end
+$$;
 
-create table public.people (
+create table if not exists public.people (
   id uuid primary key default gen_random_uuid(),
   name text not null,
   kana text not null,
@@ -19,7 +32,7 @@ create table public.people (
   updated_at timestamptz not null default now()
 );
 
-create table public.student_profiles (
+create table if not exists public.student_profiles (
   person_id uuid primary key references public.people(id) on delete cascade,
   school text not null,
   faculty text,
@@ -30,7 +43,7 @@ create table public.student_profiles (
   updated_at timestamptz not null default now()
 );
 
-create table public.organizations (
+create table if not exists public.organizations (
   id uuid primary key default gen_random_uuid(),
   name text not null,
   corporate_number text,
@@ -41,7 +54,7 @@ create table public.organizations (
   updated_at timestamptz not null default now()
 );
 
-create table public.company_contacts (
+create table if not exists public.company_contacts (
   id uuid primary key default gen_random_uuid(),
   organization_id uuid not null references public.organizations(id) on delete cascade,
   name text not null,
@@ -53,7 +66,7 @@ create table public.company_contacts (
   updated_at timestamptz not null default now()
 );
 
-create table public.opportunities (
+create table if not exists public.opportunities (
   id uuid primary key default gen_random_uuid(),
   slug text not null unique,
   type public.opportunity_type not null,
@@ -71,7 +84,7 @@ create table public.opportunities (
   updated_at timestamptz not null default now()
 );
 
-create table public.applications (
+create table if not exists public.applications (
   id uuid primary key default gen_random_uuid(),
   application_code text not null unique,
   opportunity_id uuid not null references public.opportunities(id) on delete restrict,
@@ -103,7 +116,7 @@ create table public.applications (
   )
 );
 
-create table public.consent_records (
+create table if not exists public.consent_records (
   id uuid primary key default gen_random_uuid(),
   application_id uuid not null references public.applications(id) on delete cascade,
   consent_type text not null,
@@ -113,7 +126,7 @@ create table public.consent_records (
   captured_at timestamptz not null default now()
 );
 
-create table public.attendance_records (
+create table if not exists public.attendance_records (
   application_id uuid primary key references public.applications(id) on delete cascade,
   result text check (result is null or result in ('attended', 'no_show')),
   checked_in_at timestamptz,
@@ -121,7 +134,7 @@ create table public.attendance_records (
   updated_at timestamptz not null default now()
 );
 
-create table public.admin_users (
+create table if not exists public.admin_users (
   user_id uuid primary key references auth.users(id) on delete cascade,
   display_name text not null,
   role text not null check (role in ('staff', 'regional_manager', 'admin')),
@@ -131,11 +144,17 @@ create table public.admin_users (
   updated_at timestamptz not null default now()
 );
 
-alter table public.applications
-  add constraint applications_assigned_admin_fk
-  foreign key (assigned_admin_id) references public.admin_users(user_id) on delete set null;
+do $$
+begin
+  alter table public.applications
+    add constraint applications_assigned_admin_fk
+    foreign key (assigned_admin_id) references public.admin_users(user_id) on delete set null;
+exception
+  when duplicate_object then null;
+end
+$$;
 
-create table public.application_notes (
+create table if not exists public.application_notes (
   id uuid primary key default gen_random_uuid(),
   application_id uuid not null references public.applications(id) on delete cascade,
   author_id uuid not null references public.admin_users(user_id) on delete restrict,
@@ -144,7 +163,7 @@ create table public.application_notes (
   created_at timestamptz not null default now()
 );
 
-create table public.contact_logs (
+create table if not exists public.contact_logs (
   id uuid primary key default gen_random_uuid(),
   application_id uuid not null references public.applications(id) on delete cascade,
   admin_user_id uuid references public.admin_users(user_id) on delete set null,
@@ -154,7 +173,7 @@ create table public.contact_logs (
   created_at timestamptz not null default now()
 );
 
-create table public.audit_logs (
+create table if not exists public.audit_logs (
   id bigint generated always as identity primary key,
   actor_user_id uuid references public.admin_users(user_id) on delete set null,
   action text not null,
@@ -166,13 +185,13 @@ create table public.audit_logs (
   created_at timestamptz not null default now()
 );
 
-create index applications_opportunity_idx on public.applications(opportunity_id);
-create index applications_status_idx on public.applications(status);
-create index applications_kind_idx on public.applications(application_kind);
-create index applications_email_idx on public.applications(applicant_email_normalized);
-create index applications_submitted_idx on public.applications(submitted_at desc);
-create index consent_records_application_idx on public.consent_records(application_id);
-create index audit_logs_created_idx on public.audit_logs(created_at desc);
+create index if not exists applications_opportunity_idx on public.applications(opportunity_id);
+create index if not exists applications_status_idx on public.applications(status);
+create index if not exists applications_kind_idx on public.applications(application_kind);
+create index if not exists applications_email_idx on public.applications(applicant_email_normalized);
+create index if not exists applications_submitted_idx on public.applications(submitted_at desc);
+create index if not exists consent_records_application_idx on public.consent_records(application_id);
+create index if not exists audit_logs_created_idx on public.audit_logs(created_at desc);
 
 create or replace function public.set_updated_at()
 returns trigger
@@ -184,16 +203,22 @@ begin
 end;
 $$;
 
+drop trigger if exists people_updated_at on public.people;
 create trigger people_updated_at before update on public.people
 for each row execute function public.set_updated_at();
+drop trigger if exists student_profiles_updated_at on public.student_profiles;
 create trigger student_profiles_updated_at before update on public.student_profiles
 for each row execute function public.set_updated_at();
+drop trigger if exists organizations_updated_at on public.organizations;
 create trigger organizations_updated_at before update on public.organizations
 for each row execute function public.set_updated_at();
+drop trigger if exists company_contacts_updated_at on public.company_contacts;
 create trigger company_contacts_updated_at before update on public.company_contacts
 for each row execute function public.set_updated_at();
+drop trigger if exists opportunities_updated_at on public.opportunities;
 create trigger opportunities_updated_at before update on public.opportunities
 for each row execute function public.set_updated_at();
+drop trigger if exists applications_updated_at on public.applications;
 create trigger applications_updated_at before update on public.applications
 for each row execute function public.set_updated_at();
 
