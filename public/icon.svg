@@ -1,14 +1,14 @@
-<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="180" height="180" rx="40" fill="#2f6bc4" />
-  <g fill="#ffffff">
-    <!-- Fork -->
-    <rect x="55.5" y="42" width="5" height="28" rx="2.5" />
-    <rect x="65.5" y="42" width="5" height="28" rx="2.5" />
-    <rect x="75.5" y="42" width="5" height="28" rx="2.5" />
-    <rect x="55.5" y="64" width="25" height="8" rx="4" />
-    <rect x="63" y="64" width="10" height="74" rx="5" />
-    <!-- Knife -->
-    <rect x="109.5" y="42" width="13" height="54" rx="6.5" />
-    <rect x="111.5" y="92" width="9" height="46" rx="4.5" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" role="img" aria-labelledby="title">
+  <title id="title">Table Match</title>
+  <rect width="180" height="180" fill="#ffffff"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="7">
+    <circle cx="43" cy="42" r="13" stroke="#2f7fba"/>
+    <path d="M22 112V76c0-13 8-21 20-21 11 0 16 8 21 17l7 13 24 5" stroke="#2f7fba"/>
+    <path d="M22 112c0 7 4 11 11 11h12l9 32M35 79l17 15h25" stroke="#2f7fba"/>
+    <circle cx="137" cy="42" r="13" stroke="#f58220"/>
+    <path d="M158 112V76c0-13-8-21-20-21-11 0-16 8-21 17l-7 13-24 5" stroke="#f58220"/>
+    <path d="M158 112c0 7-4 11-11 11h-12l-9 32m19-76-17 15h-25" stroke="#f58220"/>
+    <path d="M61 93h58M72 93v61m36-61v61M66 154h48" stroke="#111111"/>
+    <path d="M80 45 75 26m15 15V20m10 25 6-19" stroke="#111111" stroke-width="6"/>
   </g>
 </svg>

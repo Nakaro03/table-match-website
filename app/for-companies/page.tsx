@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
 import { Header } from "@/components/header"
 import { ForCompanies } from "@/components/for-companies"
-import { ContactForm } from "@/components/contact-form"
 import { Footer } from "@/components/footer"
 
 // title は layout の template（'%s | Table Match'）で補完されるため、ここでは接尾辞なしにします
@@ -26,7 +25,6 @@ export default function ForCompaniesPage() {
     <main className="min-h-screen pt-20">
       <Header />
       <ForCompanies />
-      <ContactForm />
       <Footer />
     </main>
   )

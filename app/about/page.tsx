@@ -1,0 +1,7 @@
+import Image from "next/image"
+import Link from "next/link"
+import { ArrowRight } from "lucide-react"
+import { Header } from "@/components/header"
+import { Footer } from "@/components/footer"
+
+export default function AboutPage() { return <main className="min-h-screen bg-paper"><Header /><section className="border-b-2 border-foreground pt-20"><div className="mx-auto grid max-w-7xl lg:grid-cols-2"><div className="px-5 py-14 sm:px-8 sm:py-24"><p className="font-mono text-xs font-black tracking-[.22em] text-primary">ABOUT TABLE MATCH</p><h1 className="mt-5 text-5xl font-black leading-[1.05] sm:text-7xl">同じ目線で、<br />話せる食卓を。</h1><p className="mt-7 max-w-xl text-lg font-bold leading-9">Table Matchは、学生と地域企業の経営者が、少人数で食事をしながら本音で話す機会をつくる学生団体です。</p></div><div className="relative min-h-[430px] border-t-2 border-foreground lg:border-l-2 lg:border-t-0"><Image src="/images/real/ceo-talk.jpg" alt="学生と経営者が対話するTable Match会場" fill priority className="object-cover" /></div></div></section><section className="mx-auto max-w-7xl px-5 py-20 sm:px-8"><div className="grid gap-8 lg:grid-cols-[.8fr_1.2fr]"><h2 className="text-4xl font-black sm:text-6xl">採用の前に、<br />人として出会う。</h2><div className="space-y-6 text-lg leading-9"><p>求人票や面接では、学生も企業も「評価される自分」を見せがちです。Table Matchでは、同じ料理を囲み、質問する側と答える側を固定しません。</p><p>学生は会社の規模や条件だけでは見えない、経営者の想いや地域の仕事を知る。企業は学生の価値観や、まだ言葉になっていない関心を聞く。その相互理解から、見学・インターン・採用・共創への自然な接続をつくります。</p><Link href="/projects" className="poster-button bg-action-orange text-white">PROJECTを見る<ArrowRight /></Link></div></div></section><Footer /></main> }

@@ -19,7 +19,7 @@ export const upcomingEvents = [
     targetAudience: ["福岡で就職を考えている学生", "企業の方とじっくり話したい学生"],
     status: "開催予定",
     image: "/images/event-4.jpg",
-    applicationUrl: "",
+    applicationUrl: "/projects/table-match-fukuoka-6",
   },
 ]
 
@@ -161,11 +161,9 @@ export function Events() {
                   {event.applicationUrl ? (
                     <Link
                       href={event.applicationUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
                       className="group inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-sm font-medium text-background transition-colors hover:bg-primary"
                     >
-                      参加申し込み
+                      詳細・先行受付
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Link>
                   ) : (

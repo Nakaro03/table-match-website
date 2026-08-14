@@ -1,164 +1,24 @@
-"use client"
-
-import { motion } from "framer-motion"
-import { Check, ArrowRight, Sparkles } from "lucide-react"
+import Image from "next/image"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-
-const benefits = [
-  "少人数制で学生と深い対話が可能",
-  "入社後のミスマッチを事前に防止",
-  "参加学生全員の連絡先を取得",
-  "採用単価を大幅に削減（ROI 836%以上）",
-  "地元テレビ取材などPR効果も期待",
-  "学生の生の声をマーケティングに活用",
-]
-
-const comparison = [
-  { item: "採用単価", traditional: "約93.6万円", tableMatch: "10万円〜" },
-  { item: "学生との接触時間", traditional: "15〜30分", tableMatch: "3〜5時間" },
-  { item: "本音の対話", traditional: "難しい", tableMatch: "食事を囲んで自然に" },
-  { item: "ミスマッチ防止", traditional: "限定的", tableMatch: "双方向の深い理解" },
-]
+import { ArrowRight, Check, MessageCircle, Route, Users } from "lucide-react"
+import { participantCompanies } from "@/lib/site-content"
 
 export function ForCompanies() {
-  return (
-    <section id="for-companies" className="py-24 bg-muted/30 relative overflow-hidden">
-      
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            企業様向けご案内
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            従来の採用媒体では実現できない、「本音」で繋がる採用体験を提供します。
-          </p>
-        </motion.div>
+  return <>
+    <section className="border-b-2 border-foreground bg-primary text-white"><div className="mx-auto grid max-w-7xl lg:grid-cols-[1.1fr_.9fr]"><div className="px-5 py-16 sm:px-8 sm:py-24"><p className="font-mono text-xs font-black tracking-[.22em] text-action-yellow">FOR COMPANIES</p><h1 className="mt-5 text-5xl font-black leading-[1.03] sm:text-7xl">求人票では伝わらない<br />会社の魅力を、<br /><span className="text-action-yellow">3時間の対話で。</span></h1><p className="mt-7 max-w-xl font-bold leading-8 text-white/80">学生との相互理解から、会社見学・インターン・採用・共創へ。目的に合う参加方法を運営が設計します。</p><div className="mt-9 flex flex-wrap gap-3"><Link href="/apply/company/company-participation" className="poster-button bg-action-orange">30分相談を申し込む<ArrowRight /></Link><a href="https://docs.google.com/presentation/d/10xiRNsDIl-oQmMl_56RO20_I0Ktx88bSqlCjKTh03Oc/edit" target="_blank" rel="noopener noreferrer" className="poster-button bg-paper text-foreground">企業向け資料を見る<ArrowRight /></a></div></div><div className="relative min-h-[440px] border-t-2 border-foreground lg:border-l-2 lg:border-t-0"><Image src="/images/generated/for-companies-hero.png" alt="学生と企業が対話するTable Match" fill priority className="object-cover" /></div></div></section>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-          {/* Benefits */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="bg-card rounded-2xl p-8 border border-border shadow-lg"
-          >
-            <h3 className="text-2xl font-bold text-foreground mb-8">参加のメリット</h3>
-            <div className="space-y-5">
-              {benefits.map((benefit, index) => (
-                <motion.div
-                  key={benefit}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="flex items-start gap-4"
-                >
-                  <div className="flex items-center justify-center w-8 h-8 rounded-full bg-accent/10 shrink-0">
-                    <Check className="h-4 w-4 text-accent" />
-                  </div>
-                  <span className="text-foreground font-medium">{benefit}</span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+    <section className="bg-paper px-5 py-20 sm:px-8 sm:py-28"><div className="mx-auto max-w-7xl"><p className="font-mono text-xs font-black tracking-widest text-primary">WHY TABLE MATCH</p><h2 className="mt-3 text-4xl font-black sm:text-6xl">採用の前に、<br />相互理解をつくる。</h2><div className="mt-10 grid border-2 border-foreground bg-white lg:grid-cols-3">{[
+      [Users,"少人数の深い対話","学生一人ひとりと向き合い、条件だけでは見えない価値観や関心を知れます。"],
+      [MessageCircle,"会社の志が届く","経営者自身の言葉で、事業の背景、地域への想い、人柄を伝えられます。"],
+      [Route,"出会いの後も伴走","見学・インターン・面談へ進む際も、学生と企業の希望を運営が調整します。"],
+    ].map(([Icon,title,text]) => { const ItemIcon = Icon as typeof Users; return <article key={String(title)} className="border-b-2 border-foreground p-7 last:border-b-0 lg:border-b-0 lg:border-r-2 lg:last:border-r-0"><ItemIcon className="h-11 w-11 text-primary" /><h3 className="mt-7 text-2xl font-black">{String(title)}</h3><p className="mt-4 text-sm leading-7 text-muted-foreground">{String(text)}</p></article> })}</div></div></section>
 
-          {/* Pricing */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="bg-gradient-to-br from-primary to-primary/80 rounded-2xl p-8 text-primary-foreground shadow-2xl shadow-primary/20 relative overflow-hidden"
-          >
-            {/* Decorative elements */}
-            <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/10 rounded-full blur-2xl" />
-            
-            <div className="relative z-10">
-              <div className="flex items-center gap-2 mb-6">
-                <Sparkles className="w-5 h-5" />
-                <h3 className="text-2xl font-bold">出展費用</h3>
-              </div>
-              <div className="mb-8">
-                <span className="text-6xl font-bold">1社10万円〜</span>
-                <span className="text-primary-foreground/80 ml-2 text-lg">（税込）</span>
-              </div>
-              <ul className="space-y-4 mb-10">
-                <li className="flex items-center gap-3">
-                  <div className="flex items-center justify-center w-6 h-6 rounded-full bg-white/20">
-                    <Check className="h-4 w-4" />
-                  </div>
-                  <span>学生との3〜5時間の交流</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="flex items-center justify-center w-6 h-6 rounded-full bg-white/20">
-                    <Check className="h-4 w-4" />
-                  </div>
-                  <span>参加学生全員の連絡先取得</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="flex items-center justify-center w-6 h-6 rounded-full bg-white/20">
-                    <Check className="h-4 w-4" />
-                  </div>
-                  <span>会場費・食事代込み</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="flex items-center justify-center w-6 h-6 rounded-full bg-white/20">
-                    <Check className="h-4 w-4" />
-                  </div>
-                  <span>アンケートデータ提供</span>
-                </li>
-              </ul>
-              <Button variant="secondary" size="lg" asChild className="w-full group font-bold text-lg h-14 shadow-lg">
-                <Link href="#contact">
-                  お問い合わせ
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Button>
-            </div>
-          </motion.div>
-        </div>
+    <section className="border-y-2 border-foreground bg-action-yellow px-5 py-20 sm:px-8"><div className="mx-auto max-w-7xl"><p className="font-mono text-xs font-black tracking-widest text-primary">HOW IT CONNECTS</p><h2 className="mt-3 text-4xl font-black sm:text-6xl">対話から採用・共創まで。</h2><div className="mt-10 grid gap-4 md:grid-cols-4">{[["01","対面イベント"],["02","相互理解"],["03","見学・インターン"],["04","採用・共創"]].map(([number,label]) => <div key={number} className="relative border-2 border-foreground bg-paper p-6"><p className="font-mono text-5xl font-black text-primary">{number}</p><p className="mt-5 text-xl font-black">{label}</p></div>)}</div></div></section>
 
-        {/* Comparison Table */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <h3 className="text-2xl font-bold text-foreground mb-8 text-center">
-            従来の採用方法との比較
-          </h3>
-          <div className="overflow-x-auto">
-            <table className="w-full bg-card rounded-2xl border border-border overflow-hidden shadow-lg">
-              <thead>
-                <tr className="bg-muted">
-                  <th className="px-6 py-5 text-left text-sm font-bold text-foreground"></th>
-                  <th className="px-6 py-5 text-left text-sm font-bold text-muted-foreground">従来の採用媒体</th>
-                  <th className="px-6 py-5 text-left text-sm font-bold text-primary">Table Match</th>
-                </tr>
-              </thead>
-              <tbody>
-                {comparison.map((row, index) => (
-                  <tr key={row.item} className={index !== comparison.length - 1 ? "border-b border-border" : ""}>
-                    <td className="px-6 py-5 text-sm font-bold text-foreground">{row.item}</td>
-                    <td className="px-6 py-5 text-sm text-muted-foreground">{row.traditional}</td>
-                    <td className="px-6 py-5 text-sm text-foreground font-semibold">{row.tableMatch}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  )
+    <section className="bg-paper px-5 py-20 sm:px-8"><div className="mx-auto max-w-7xl"><p className="font-mono text-xs font-black tracking-widest text-primary">RESULTS / 2026.07</p><div className="mt-6 grid border-l-2 border-t-2 border-foreground sm:grid-cols-3">{[["5回","開催実績"],["70名+","累計参加学生"],["9社","累計参加企業"]].map(([value,label]) => <div key={label} className="border-b-2 border-r-2 border-foreground bg-white p-7"><p className="font-mono text-5xl font-black text-primary sm:text-6xl">{value}</p><p className="mt-3 font-black">{label}</p></div>)}</div><div className="mt-12 grid grid-cols-2 border-l-2 border-t-2 border-foreground md:grid-cols-3">{participantCompanies.map((company) => <div key={company.name} className="grid min-h-28 place-items-center border-b-2 border-r-2 border-foreground bg-white p-4"><Image src={company.logo} alt={company.name} width={320} height={120} className="h-16 w-full object-contain" /></div>)}</div></div></section>
+
+    <section className="border-y-2 border-foreground bg-white px-5 py-20 sm:px-8"><div className="mx-auto max-w-6xl"><p className="font-mono text-xs font-black tracking-widest text-primary">PLAN</p><div className="mt-4 grid gap-8 lg:grid-cols-[1fr_.8fr]"><div><h2 className="text-4xl font-black sm:text-6xl">出展費用<br /><span className="text-action-orange">1社10万円〜</span></h2><p className="mt-5 text-sm leading-7 text-muted-foreground">開催地域、参加人数、記事制作・インターン設計など支援範囲により個別にご提案します。正式な金額と条件は相談後の見積書でご確認ください。</p></div><ul className="border-2 border-foreground bg-paper p-6">{["学生との少人数交流","会場・食事を含む当日設計","学生アンケートの集計共有","希望者との次の接点づくり","運営による実施前後の調整"].map((item) => <li key={item} className="flex gap-3 border-b border-foreground/30 py-3 font-bold"><Check className="h-5 w-5 text-primary" />{item}</li>)}</ul></div></div></section>
+
+    <section className="bg-action-orange px-5 py-16 text-white sm:px-8 sm:py-24"><div className="mx-auto grid max-w-6xl gap-7 sm:grid-cols-[1fr_auto] sm:items-center"><div><p className="font-mono text-xs font-black text-action-yellow">LET&apos;S TALK</p><h2 className="mt-3 text-4xl font-black sm:text-6xl">自社に合う参加方法を相談する。</h2><p className="mt-5 font-bold text-white/80">まだ出展を決めていなくても構いません。課題と対象学生を伺い、選択肢をご案内します。</p></div><Link href="/apply/company/company-participation" className="poster-button bg-paper text-foreground">企業相談フォームへ<ArrowRight /></Link></div></section>
+  </>
 }

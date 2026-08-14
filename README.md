@@ -94,7 +94,33 @@
 ## 開発
 
 ```bash
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 ブラウザで [http://localhost:3000](http://localhost:3000) を開きます。
+
+## 申込・運営管理MVP
+
+- `/projects`: イベント、インターン、会社見学、企業参加の一覧
+- `/topics`: 会社見学、体験談、取材記事
+- `/news`: 開催・募集・メディア掲載の公式情報
+- `/about`: Table Matchの考え方と仕組み
+- `/apply/[slug]`: 学生向け申込フォーム
+- `/apply/company/[slug]`: 企業向け出展・協賛相談フォーム
+- `/admin`: 運営ダッシュボード
+- `/admin/applications`: 申込検索・絞り込み
+- `/admin/calendar`: 企画別の参加予定
+- `/admin/internships`: インターン進捗
+
+申込の保存と管理者認証にはSupabaseを使います。セットアップ手順は [`supabase/README.md`](supabase/README.md)、必要な環境変数は [`.env.example`](.env.example) を参照してください。一般的な問い合わせだけは従来のWeb3Formsを使用します。
+
+### レスポンシブ画像確認
+
+本番ビルドを `pnpm start` で起動した状態で、次を実行します。
+
+```bash
+pnpm capture:designs
+```
+
+公開・申込・管理者ログインの主要15ページをPC幅とスマホ幅で撮影し、`docs/design-previews/final/`へ保存します。同時に、横方向のはみ出しと画像読み込み状態を`audit.json`へ記録します。
