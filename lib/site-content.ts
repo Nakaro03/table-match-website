@@ -94,11 +94,13 @@ export const newsItems: NewsItem[] = [
   },
 ]
 
-export const participantCompanies = [
+export type ParticipantCompany = { name: string; logo: string; surface?: "blue" | "dark" }
+
+export const participantCompanies: ParticipantCompany[] = [
   { name: "株式会社K2Tプランニング", logo: "/images/company-logos/official/k2t.jpg" },
   { name: "株式会社くじら", logo: "/images/company-logos/official/kujira.jpeg" },
-  { name: "プランタンホテルグループ", logo: "/images/company-logos/printemps.svg" },
-  { name: "ちの技研", logo: "/images/company-logos/chino.svg" },
+  { name: "プランタンホテルグループ", logo: "/images/company-logos/official/printemps.png", surface: "dark" },
+  { name: "ちの技研", logo: "/images/company-logos/official/chino-giken.svg", surface: "blue" },
   { name: "諏訪三社電機", logo: "/images/company-logos/official/suwa.jpeg" },
   { name: "馬車馬テクノロジーズ", logo: "/images/company-logos/official/bashauma.png" },
   { name: "ハートアロー", logo: "/images/company-logos/official/heart-arrow.png" },
