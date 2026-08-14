@@ -4,7 +4,7 @@ import { ArrowUpRight, Instagram, Mail, MapPin } from "lucide-react"
 
 const navLinks = [
   ["PROJECT", "/projects"], ["TOPICS", "/topics"], ["NEWS", "/news"], ["ABOUT", "/about"],
-  ["TEAM", "/team"], ["FOR COMPANIES", "/for-companies"], ["PRIVACY", "/privacy"], ["ADMIN", "/admin/login"],
+  ["TEAM", "/team"], ["PHOTOGRAPHER", "/photographer"], ["FOR COMPANIES", "/for-companies"], ["PRIVACY", "/privacy"], ["ADMIN", "/admin/login"],
 ]
 
 export function Footer() {

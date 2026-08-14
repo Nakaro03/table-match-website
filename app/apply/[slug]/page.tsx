@@ -4,6 +4,7 @@ import type { Metadata } from "next"
 import { CalendarDays, MapPin, Tag } from "lucide-react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { PhotoCredit } from "@/components/photo-credit"
 import { StudentApplicationForm } from "@/components/applications/student-application-form"
 import { getOpportunity, opportunityTypeLabel } from "@/lib/opportunities"
 import { hasServiceSupabaseConfig } from "@/lib/supabase/config"
@@ -39,6 +40,7 @@ export default async function StudentApplyPage({ params }: Props) {
           <div className="relative min-h-80 border-t-2 border-foreground lg:border-l-2 lg:border-t-0">
             <Image src={opportunity.image} alt={opportunity.title} fill priority className="object-cover" />
             <div className="absolute right-5 top-5 rounded-full bg-action-orange px-5 py-8 font-mono text-xl font-black text-white [transform:rotate(7deg)]">APPLY<br />NOW</div>
+            <PhotoCredit />
           </div>
         </div>
       </section>

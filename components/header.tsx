@@ -11,6 +11,7 @@ const navItems = [
   { label: "NEWS", href: "/news" },
   { label: "ABOUT", href: "/about" },
   { label: "TEAM", href: "/team" },
+  { label: "CREATOR", href: "/photographer" },
   { label: "FOR COMPANIES", href: "/for-companies" },
 ]
 
@@ -19,7 +20,7 @@ export function Header() {
   return <><header className="fixed inset-x-0 top-0 z-50 border-b-2 border-foreground bg-background/95 backdrop-blur">
     <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:h-20 sm:px-6 lg:px-8">
       <Link href="/" aria-label="Table Match ホーム"><Logo className="text-lg sm:text-xl" /></Link>
-      <nav className="hidden items-center gap-5 lg:flex">{navItems.map((item) => <Link key={item.href} href={item.href} className="font-mono text-xs font-bold tracking-wide hover:text-primary">{item.label}</Link>)}</nav>
+      <nav className="hidden items-center gap-4 lg:flex xl:gap-5">{navItems.map((item) => <Link key={item.href} href={item.href} className="font-mono text-[11px] font-bold tracking-wide hover:text-primary xl:text-xs">{item.label}</Link>)}</nav>
       <div className="hidden lg:block"><Link href="/projects" className="inline-flex items-center gap-2 bg-action-orange px-5 py-3 text-sm font-black text-white hover:bg-foreground">参加・応募する<ArrowUpRight className="h-4 w-4" /></Link></div>
       <button type="button" onClick={() => setOpen(!open)} aria-expanded={open} aria-label="メニュー" className="p-2 lg:hidden">{open ? <X /> : <Menu />}</button>
     </div>

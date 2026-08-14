@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import { useEffect, useState } from "react"
+import { PhotoCredit } from "@/components/photo-credit"
 
 const slides = [
   { src: "/images/real/students-table.jpg", alt: "学生がテーブルを囲み笑顔で食事を楽しむ様子" },
@@ -29,6 +30,7 @@ export function HeroMediaCarousel() {
       sizes="(max-width: 1024px) 100vw, 50vw"
       className={`object-cover transition-opacity duration-700 ${index === activeIndex ? "opacity-100" : "opacity-0"}`}
     />)}
+    <PhotoCredit className="bottom-auto left-4 right-auto top-4" />
     <div className="absolute bottom-4 right-4 flex gap-2 border-2 border-foreground bg-paper p-2" aria-label="ヒーロー写真を選択">
       {slides.map((slide, index) => <button
         key={slide.src}
