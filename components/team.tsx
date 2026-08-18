@@ -62,12 +62,6 @@ export const naganoMembers = [
 // 写真は public/images/team/ に保存してください
 export const fukuokaMembers = [
   {
-    name: "工藤 大晴",
-    role: "司会担当", // ← 役割を記入（例：リーダー / SNS担当 など）
-    university: "福岡医健・スポーツ専門学校3年生", // ← 大学名を記入（例：九州大学 3年）
-    image: "/images/team/fukuoka-1.jpg",
-  },
-  {
     name: "桑野 櫻子",
     role: "事務担当", // ← 役割を記入
     university: "福岡大学 法学部 2年生", // ← 大学名を記入
@@ -75,7 +69,7 @@ export const fukuokaMembers = [
   },
   {
     name: "大西 雄大",
-    role: "SNS担当", // ← 役割を記入
+    role: "広報担当", // ← 役割を記入
     university: "九州大学 農学部 3年生", // ← 大学名を記入
     image: "/images/team/fukuoka-3.jpg",
   },
@@ -90,12 +84,6 @@ export const fukuokaMembers = [
     role: "営業担当",
     university: "九州産業大学 商学部 2年生",
     image: "/images/team/fukuoka-5.jpg",
-  },
-  {
-    name: "西岡 恭侑",
-    role: "営業担当",
-    university: "福岡大学 理学部 地球科学科 2年生",
-    image: "/images/team/fukuoka-6.jpg",
   }
 ]
 

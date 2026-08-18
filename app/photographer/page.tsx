@@ -30,17 +30,17 @@ export default function PhotographerPage() {
             />
           </div>
           <div className="flex flex-col justify-center px-5 py-14 sm:px-10 sm:py-20">
-            <p className="font-mono text-xs font-black tracking-[.22em] text-action-yellow">PHOTOGRAPHER / CREATIVE DIRECTOR</p>
+            <p className="font-mono text-xs font-black tracking-[.22em] text-action-yellow">撮影者 / クリエイティブディレクター</p>
             <h1 className="mt-5 text-5xl font-black leading-none sm:text-7xl">茂-Goodfellow</h1>
             <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center gap-2 self-start border-b-2 border-action-yellow pb-1 font-mono text-lg font-black text-action-yellow">
               <Instagram className="h-5 w-5" />@pantheon.works
             </a>
             <p className="mt-8 text-2xl font-black">アーティスト</p>
-            <p className="mt-2 font-mono text-lg font-bold text-white/75">Creative director / photographer</p>
-            <p className="mt-7 flex items-center gap-3 font-bold"><MapPin className="h-5 w-5 text-action-yellow" />Fukuoka • Nagasaki</p>
+            <p className="mt-2 font-mono text-lg font-bold text-white/75">クリエイティブディレクター・撮影</p>
+            <p className="mt-7 flex items-center gap-3 font-bold"><MapPin className="h-5 w-5 text-action-yellow" />福岡・長崎</p>
             <div className="mt-10 border-l-4 border-action-yellow pl-5">
               <p className="text-xl font-black">お仕事の依頼はDMへ</p>
-              <p className="mt-1 font-mono text-sm text-white/65">You can contact DM or E-mail</p>
+              <p className="mt-1 font-mono text-sm text-white/65">DMまたはメールでご連絡ください</p>
             </div>
             <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="poster-button mt-9 max-w-sm bg-action-orange text-white">
               Instagramから連絡する<ArrowUpRight className="h-5 w-5" />
@@ -51,7 +51,7 @@ export default function PhotographerPage() {
       <section className="px-5 py-16 sm:px-8 sm:py-24">
         <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[.8fr_1.2fr]">
           <div>
-            <p className="font-mono text-xs font-black tracking-[.2em] text-primary">VISUAL PARTNER</p>
+            <p className="font-mono text-xs font-black tracking-[.2em] text-primary">写真・映像パートナー</p>
             <h2 className="mt-4 text-4xl font-black leading-tight sm:text-6xl">会場の温度を、<br />写真に残す。</h2>
           </div>
           <div className="grid border-2 border-foreground bg-white sm:grid-cols-2">

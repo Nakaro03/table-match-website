@@ -6,13 +6,13 @@ import { ArrowUpRight, Menu, X } from "lucide-react"
 import { Logo } from "./logo"
 
 const navItems = [
-  { label: "PROJECT", href: "/projects" },
-  { label: "TOPICS", href: "/topics" },
-  { label: "NEWS", href: "/news" },
-  { label: "ABOUT", href: "/about" },
-  { label: "TEAM", href: "/team" },
-  { label: "CREATOR", href: "/photographer" },
-  { label: "FOR COMPANIES", href: "/for-companies" },
+  { label: "企画", href: "/projects" },
+  { label: "活動レポート", href: "/topics" },
+  { label: "お知らせ", href: "/news" },
+  { label: "団体紹介", href: "/about" },
+  { label: "運営メンバー", href: "/team" },
+  { label: "撮影者", href: "/photographer" },
+  { label: "企業の方へ", href: "/for-companies" },
 ]
 
 export function Header() {
