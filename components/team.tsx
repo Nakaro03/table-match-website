@@ -69,7 +69,7 @@ export const fukuokaMembers = [
   },
   {
     name: "大西 雄大",
-    role: "SNS担当", // ← 役割を記入
+    role: "広報担当", // ← 役割を記入
     university: "九州大学 農学部 3年生", // ← 大学名を記入
     image: "/images/team/fukuoka-3.jpg",
   },

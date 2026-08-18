@@ -3,8 +3,8 @@ import { Camera, Users } from "lucide-react"
 
 export function PeopleNav({ active }: { active: "team" | "photographer" }) {
   const items = [
-    { key: "team", href: "/team", label: "運営メンバー", sublabel: "TEAM", Icon: Users },
-    { key: "photographer", href: "/photographer", label: "撮影者", sublabel: "PHOTOGRAPHER", Icon: Camera },
+    { key: "team", href: "/team", label: "運営メンバー", sublabel: "運営", Icon: Users },
+    { key: "photographer", href: "/photographer", label: "撮影者", sublabel: "撮影", Icon: Camera },
   ] as const
 
   return (

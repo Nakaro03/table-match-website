@@ -1,6 +1,6 @@
 export type Story = {
   slug: string
-  category: "VOICE" | "COMPANY VISIT" | "MEDIA"
+  category: "学生の声" | "会社見学" | "メディア掲載"
   title: string
   excerpt: string
   date: string
@@ -12,7 +12,7 @@ export type Story = {
 export const topics: Story[] = [
   {
     slug: "student-found-next-step",
-    category: "VOICE",
+    category: "学生の声",
     title: "『やりたい』が言葉になった。食卓から始まった次の一歩",
     excerpt: "将来像が決まっていなかった学生が、経営者との対話から自分の関心を見つけるまで。",
     date: "2026.07.24",
@@ -26,7 +26,7 @@ export const topics: Story[] = [
   },
   {
     slug: "company-visit-real-workplace",
-    category: "COMPANY VISIT",
+    category: "会社見学",
     title: "求人票の外側へ。地域企業の仕事場を訪ねました",
     excerpt: "社員の働き方や会社の空気を、現地で見て聞く少人数の会社見学レポート。",
     date: "2026.07.10",
@@ -40,7 +40,7 @@ export const topics: Story[] = [
   },
   {
     slug: "lcv-media-coverage",
-    category: "MEDIA",
+    category: "メディア掲載",
     title: "学生と地域企業の対話を、地元テレビLCVが取材",
     excerpt: "Table Matchの会場で生まれる会話と、学生運営の取り組みが紹介されました。",
     date: "2026.06.28",
@@ -57,7 +57,7 @@ export const topics: Story[] = [
 export type NewsItem = {
   slug: string
   date: string
-  category: "EVENT" | "PROJECT" | "MEDIA"
+  category: "イベント" | "企画" | "メディア掲載"
   title: string
   summary: string
   body: string[]
@@ -68,7 +68,7 @@ export const newsItems: NewsItem[] = [
   {
     slug: "fukuoka-6-preview",
     date: "2026.08.14",
-    category: "EVENT",
+    category: "イベント",
     title: "第6回 Table Match 福岡の先行受付を開始しました",
     summary: "2026年10月中旬、福岡市内で開催予定。詳細決定前の先行受付を開始します。",
     body: ["第6回 Table Match 福岡を2026年10月中旬に開催予定です。会場、時間、参加企業は決まり次第、本サイトでお知らせします。", "先行受付へ登録いただいた方には、詳細の公開時に運営からご案内します。一人参加、進路が未定の学生も歓迎します。"],
@@ -77,19 +77,19 @@ export const newsItems: NewsItem[] = [
   {
     slug: "internship-project-open",
     date: "2026.08.08",
-    category: "PROJECT",
+    category: "企画",
     title: "地域企業スタートアップ型インターンの募集を公開しました",
     summary: "事業課題に企画から実行まで取り組む実践型インターンです。",
-    body: ["長野・福岡の地域企業と取り組む、実践型インターンの相談受付を始めました。専攻や学年よりも、まず話を聞いてみたいという気持ちを大切にします。", "活動時期や頻度は企業と学生の希望を聞き、運営が調整します。詳しい募集内容はPROJECTページをご確認ください。"],
+    body: ["長野・福岡の地域企業と取り組む、実践型インターンの相談受付を始めました。専攻や学年よりも、まず話を聞いてみたいという気持ちを大切にします。", "活動時期や頻度は企業と学生の希望を聞き、運営が調整します。詳しい募集内容は企画ページをご確認ください。"],
     relatedHref: "/projects/regional-startup-internship",
   },
   {
     slug: "fifth-nagano-completed",
     date: "2026.07.18",
-    category: "EVENT",
+    category: "イベント",
     title: "第5回 Table Match 長野を開催しました",
     summary: "茅野市Kiitosで、学生14名と地域企業が対話しました。",
-    body: ["2026年7月17日、茅野市Kiitosで第5回 Table Match 長野を開催しました。学生14名が参加し、少人数のテーブルで仕事や進路について話しました。", "ご参加いただいた皆さま、運営を支えてくださった皆さまに感謝申し上げます。開催レポートはTOPICSで順次公開します。"],
+    body: ["2026年7月17日、茅野市Kiitosで第5回 Table Match 長野を開催しました。学生14名が参加し、少人数のテーブルで仕事や進路について話しました。", "ご参加いただいた皆さま、運営を支えてくださった皆さまに感謝申し上げます。開催レポートは活動レポートで順次公開します。"],
     relatedHref: "/#achievements",
   },
 ]

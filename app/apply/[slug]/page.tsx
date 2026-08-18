@@ -39,7 +39,7 @@ export default async function StudentApplyPage({ params }: Props) {
           </div>
           <div className="relative min-h-80 border-t-2 border-foreground lg:border-l-2 lg:border-t-0">
             <Image src={opportunity.image} alt={opportunity.title} fill priority className="object-cover" />
-            <div className="absolute right-5 top-5 rounded-full bg-action-orange px-5 py-8 font-mono text-xl font-black text-white [transform:rotate(7deg)]">APPLY<br />NOW</div>
+            <div className="absolute right-5 top-5 rounded-full bg-action-orange px-5 py-8 font-mono text-xl font-black text-white [transform:rotate(7deg)]">応募<br />受付中</div>
             <PhotoCredit />
           </div>
         </div>

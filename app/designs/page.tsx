@@ -20,7 +20,7 @@ export default function DesignsPage() {
       <header className="mx-auto flex max-w-6xl items-center justify-between px-5 py-6 sm:px-8">
         <a href="#top" className="text-lg font-bold tracking-tight">Table Match</a>
         <nav className="hidden gap-6 text-sm sm:flex">
-          <a href="#event" className="hover:underline">次回開催</a>
+          <a href="#event" className="hover:underline">開催</a>
           <a href="#about" className="hover:underline">Table Matchについて</a>
           <a href="#record" className="hover:underline">これまでの開催</a>
         </nav>

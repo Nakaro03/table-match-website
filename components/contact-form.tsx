@@ -177,8 +177,8 @@ ${formData.message}
               animate={{ opacity: 1, scale: 1 }}
               className="text-center py-12"
             >
-              <div className="w-20 h-20 rounded-full bg-emerald-500/10 flex items-center justify-center mx-auto mb-6">
-                <CheckCircle className="h-10 w-10 text-emerald-500" />
+              <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
+                <CheckCircle className="h-10 w-10 text-primary" />
               </div>
               <h3 className="text-2xl font-semibold text-foreground mb-3">
                 送信完了しました

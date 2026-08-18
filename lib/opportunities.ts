@@ -95,9 +95,9 @@ export function getOpportunity(slug: string) {
 
 export function opportunityTypeLabel(type: OpportunityType) {
   return {
-    event: "EVENT",
-    internship: "INTERNSHIP",
-    company_visit: "COMPANY VISIT",
-    company_participation: "FOR COMPANIES",
+    event: "イベント",
+    internship: "インターン",
+    company_visit: "会社見学",
+    company_participation: "企業の方へ",
   }[type]
 }
