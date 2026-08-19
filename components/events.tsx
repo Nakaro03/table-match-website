@@ -48,7 +48,7 @@ export const pastEvents = [
     date: "2026年5月8日（金）",
     location: "Kiitos（茅野市）",
     companies: ["インダストリーネットワーク", "ちの技研", "諏訪三社電機", "馬車馬テクノロジーズ"],
-    participants: 15,
+    participants: 25,
     image: "/images/event-3.jpg",
   },
   {
