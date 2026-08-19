@@ -5,9 +5,17 @@ import Image from "next/image"
 import { Users, Heart, X, ChevronRight } from "lucide-react"
 import { useState } from "react"
 
+type Member = {
+  name: string
+  role: string
+  university: string
+  image: string
+  imagePosition?: string
+}
+
 // 福岡支部メンバー（写真・役割・大学はここを編集）
 // 写真は public/images/team/ に保存してください
-export const naganoMembers = [
+export const naganoMembers: Member[] = [
   {
     name: "後畠 隼輔",
     role: "事務担当", // ← 役割を記入（例：リーダー / SNS担当 など）
@@ -60,7 +68,7 @@ export const naganoMembers = [
 
 // 福岡支部メンバー（写真・役割・大学はここを編集）
 // 写真は public/images/team/ に保存してください
-export const fukuokaMembers = [
+export const fukuokaMembers: Member[] = [
   {
     name: "桑野 櫻子",
     role: "事務担当", // ← 役割を記入
@@ -84,6 +92,7 @@ export const fukuokaMembers = [
     role: "営業担当",
     university: "九州産業大学 商学部 2年生",
     image: "/images/team/fukuoka-5.jpg",
+    imagePosition: "50% 35%",
   }
 ]
 
