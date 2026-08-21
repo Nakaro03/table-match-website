@@ -18,9 +18,15 @@ type Member = {
 export const naganoMembers: Member[] = [
   {
     name: "後畠 隼輔",
-    role: "長野支部代表", // ← 役割を記入（例：リーダー / SNS担当 など）
+    role: "長野支部 代表", // ← 役割を記入（例：リーダー / SNS担当 など）
     university: "公立諏訪東京理科大学 情報応用工学科 3年", // ← 大学名を記入（例：九州大学 3年）
     image: "/images/team/nagano-1.jpg",
+  },
+  {
+    name: "柏木 統我",
+    role: "長野支部 副代表", // ← 役割を記入（例：リーダー / SNS担当 など）
+    university: "諏訪東京理科大学 工学部 情報応用工学科 3年", // ← 大学名を記入（例：九州大学 3年）
+    image: "/images/team/nagano-6.jpg",
   },
   {
     name: "矢島 蓮",
@@ -47,12 +53,6 @@ export const naganoMembers: Member[] = [
     image: "/images/team/nagano-5.jpg",
   },
   {
-    name: "柏木 統我",
-    role: "長野支部副代表", // ← 役割を記入（例：リーダー / SNS担当 など）
-    university: "諏訪東京理科大学 工学部 情報応用工学科 3年", // ← 大学名を記入（例：九州大学 3年）
-    image: "/images/team/nagano-6.jpg",
-  },
-  {
     name: "亀田 楽人",
     role: "広告担当", // ← 役割が決まったら記入（例：リーダー / SNS担当 など）
     university: "諏訪東京理科大学 工学部 機械電気工学科 3年",
@@ -71,9 +71,16 @@ export const naganoMembers: Member[] = [
 export const fukuokaMembers: Member[] = [
   {
     name: "桑野 櫻子",
-    role: "福岡支部代表", // ← 役割を記入
+    role: "福岡支部 代表", // ← 役割を記入
     university: "福岡大学 法学部 2年生", // ← 大学名を記入
     image: "/images/team/fukuoka-2.jpg",
+  },
+  {
+    name: "三木 陽果",
+    role: "福岡支部 副代表",
+    university: "九州産業大学 商学部 2年生",
+    image: "/images/team/fukuoka-5.jpg",
+    imagePosition: "50% 35%",
   },
   {
     name: "大西 雄大",
@@ -87,13 +94,6 @@ export const fukuokaMembers: Member[] = [
     university: "福岡大学 商学部 2年生",
     image: "/images/team/fukuoka-4.jpg",
   },
-  {
-    name: "三木 陽果",
-    role: "福岡支部副代表",
-    university: "九州産業大学 商学部 2年生",
-    image: "/images/team/fukuoka-5.jpg",
-    imagePosition: "50% 35%",
-  }
 ]
 
 // Team data - editable via GitHub
