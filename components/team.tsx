@@ -64,6 +64,19 @@ export const naganoMembers: Member[] = [
     university: "公立諏訪東京理科大学 工学部 情報応用工学科 2年",
     image: "/images/team/nagano-8.jpg",
   },
+  {
+    name: "フチーロ 由茉",
+    role: "営業担当",
+    university: "公立諏訪東京理科大学 工学部 情報応用工学科 4年",
+    image: "/images/team/nagano-9.jpg",
+  },
+  {
+    name: "両角 海星",
+    role: "広告担当",
+    university: "公立諏訪東京理科大学 工学部 情報応用工学科 3年",
+    image: "/images/team/nagano-10.jpg",
+    imagePosition: "65% 40%",
+  },
 ]
 
 // 福岡支部メンバー（写真・役割・大学はここを編集）

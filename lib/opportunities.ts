@@ -16,9 +16,29 @@ export type Opportunity = {
   price: string
   image: string
   benefits: string[]
+  /** 外部の申込フォーム（Googleフォーム等）。指定があれば申込ボタンがここへ飛ぶ */
+  applicationUrl?: string
 }
 
 export const opportunities: Opportunity[] = [
+  {
+    id: "00000000-0000-4000-8000-000000000106",
+    slug: "table-match-nagano-6",
+    type: "event",
+    status: "preview",
+    title: "第6回 Table Match 長野",
+    summary: "学生と地域企業の経営者が、少人数のテーブルで本音を交わす交流イベントです。",
+    date: "2026年12月中旬〜下旬予定",
+    time: "詳細は後日公開",
+    location: "長野県内（予定）",
+    region: "nagano",
+    target: "大学生・大学院生・専門学校生",
+    capacity: "詳細は後日公開",
+    price: "無料（予定）",
+    image: "/images/event-5.jpeg",
+    benefits: ["経営者と直接話せる", "地域企業のリアルを知れる", "インターンや次の挑戦につながる"],
+    applicationUrl: "https://docs.google.com/forms/d/1Q2k3vtTFM3vxjbsvTAUUG5AimCcw1K86o77Cc3YVO0I/viewform",
+  },
   {
     id: "00000000-0000-4000-8000-000000000006",
     slug: "table-match-fukuoka-6",
@@ -26,7 +46,7 @@ export const opportunities: Opportunity[] = [
     status: "preview",
     title: "第6回 Table Match 福岡",
     summary: "学生と地域企業の経営者が、少人数のテーブルで本音を交わす交流イベントです。",
-    date: "2026年10月中旬予定",
+    date: "2027年2月4日",
     time: "詳細は後日公開",
     location: "福岡市内（予定）",
     region: "fukuoka",
